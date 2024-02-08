@@ -1,9 +1,14 @@
 using Nazar.Components;
+using Nazar.UserInterfaces;
 
 namespace Nazar.Systems;
 
 public class ButtonDrawSystem : BaseSystem<float>
 {
+
+/// <summary>
+/// System responsible for drawing buttons in the world.
+/// </summary>
     public ButtonDrawSystem(World world) : base(world) { }
 
     public override void Update(float state)
@@ -15,12 +20,7 @@ public class ButtonDrawSystem : BaseSystem<float>
             ref var pose = ref entity.Get<PositionComponent>();
             ref var button = ref entity.Get<ButtonComponent>();
 
-            UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
-            if (UI.Button(button.Label))
-            {
-                World.Publish(new ButtonPressedMessage() { Message = "Button Pressed!" });
-            }
-            UI.WindowEnd();
+            UIHandler.DrawButton(ref pose, ref button, World);
         }
     }
 }

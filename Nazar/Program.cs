@@ -1,6 +1,4 @@
-using System.Linq;
-﻿using System.Linq;
-using Nazar.Components;
+using Nazar.Factories;
 
 namespace Nazar;
 
@@ -41,24 +39,8 @@ internal class Program
 
     private static void CreateEntities()
     {
-        CreateButton();
-        CreateMovableTextWindow();
-    }
-
-    // Create a moveable window that has an input a string value
-    // Each input/output will contain an unique_id, it's name, it's dataType and the entity is it assigned to
-    private static void CreateMovableTextWindow()
-    {
-        var entity = World.CreateEntity();
-        entity.Set(new PositionComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
-        entity.Set(new TextContentsComponent { TextContents = "test" });
-    }
-    
-    private static void CreateButton()
-    {
-        var buttonEntity = World.CreateEntity();
-        buttonEntity.Set(new ButtonComponent { Label = "Press Me!" });
-        buttonEntity.Set(new PositionComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
+        EntityFactory.CreateButton(World, "Press Me!", new Pose(0.2f, 0, -0.5f, Quat.Identity));
+        EntityFactory.CreateTextWindow(World, "test", new Pose(-0.2f, 0, -0.5f, Quat.Identity));
     }
 
     private static void RunApplication()

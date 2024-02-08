@@ -1,9 +1,14 @@
 using Nazar.Components;
+using Nazar.UserInterfaces;
 
 namespace Nazar.Systems;
 
 
         public class SimpleTextWindowDrawSystem : BaseSystem<float>
+
+/// <summary>
+/// System responsible for drawing text windows in the world.
+/// </summary>
 {
     public SimpleTextWindowDrawSystem(World world) : base(world) { }
 
@@ -15,9 +20,7 @@ namespace Nazar.Systems;
             ref var pose = ref entity.Get<PositionComponent>();
             ref var textContent = ref entity.Get<TextContentsComponent>();
 
-            UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
-            UI.Label(textContent.TextContents);
-            UI.WindowEnd();
+            UIHandler.DrawTextWindow(ref pose, ref textContent);
         }
     }
 }
