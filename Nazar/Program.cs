@@ -59,7 +59,6 @@ internal class Program
 
     private static void Cleanup()
     {
-        Systems.ForEach(system => system.Dispose());
         World.Dispose();
         SK.Shutdown();
     }
