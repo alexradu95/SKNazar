@@ -17,6 +17,7 @@ internal class Program
         if (!SK.Initialize(CreateStereoKitSettings())) return false;
 
         CreateEntities();
+        
         InitializeSystems();
         return true;
     }
