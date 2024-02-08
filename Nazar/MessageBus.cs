@@ -16,9 +16,9 @@ namespace Nazar
             _world.Subscribe(subscriber, action);
         }
 
-        public static void Unsubscribe<T>(object subscriber) where T : struct
+        public static void Unsubscribe(object subscriber)
         {
-            _world.Unsubscribe<T>(subscriber);
+            _world.Unsubscribe(subscriber);
         }
     }
 }
