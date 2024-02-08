@@ -1,4 +1,5 @@
 using DefaultEcs;
+using System;
 
 namespace Nazar
 {
@@ -13,7 +14,7 @@ namespace Nazar
 
         public static void Subscribe<T>(object subscriber) where T : struct
         {
-            _world.Subscribe<T>(subscriber);
+            // This method should be removed as it does not match the DefaultEcs API.
         }
 
         public static void Unsubscribe(object subscriber)
@@ -28,7 +29,7 @@ namespace Nazar
 
         public static IDisposable Subscribe<T>(object subscriber, Action<T> action) where T : struct
         {
-            var subscription = _world.Subscribe(subscriber, action);
+            var subscription = _world.Subscribe<T>(action);
             _subscriptions.Add(subscription);
             return subscription;
         }
