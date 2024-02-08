@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9C666A4F-98E7-4BAD-AA9F-8B90BF88B220}") = "Nazar_Android", "Nazar\Projects\Android\Nazar_Android.csproj", "{CC20636B-DD4A-4575-99A7-A2C02D189792}"
-EndProject
 Project("{9C666A4F-98E7-4BAD-AA9F-8B90BF88B220}") = "Nazar", "Nazar\Nazar.csproj", "{841420DC-86CC-4A5C-9A11-385F27E5410A}"
 EndProject
 Global
@@ -13,12 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC20636B-DD4A-4575-99A7-A2C02D189792}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{841420DC-86CC-4A5C-9A11-385F27E5410A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{841420DC-86CC-4A5C-9A11-385F27E5410A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{841420DC-86CC-4A5C-9A11-385F27E5410A}.Release|Any CPU.ActiveCfg = Release|Any CPU

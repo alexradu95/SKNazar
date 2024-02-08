@@ -58,12 +58,12 @@ class Program
 
     static void CreateEntities()
     {
-        CreateEntityOne();
-        entityTwo = CreateEntityTwo(); // Assign the returned entity to entityTwo
-        CreateButtonEntity();
+        CreateRotatingCube();
+        entityTwo = CreateMovableTextWindow(); // Assign the returned entity to entityTwo
+        CreateButton();
     }
     
-    static void CreateEntityOne()
+    static void CreateRotatingCube()
     {
         var entity = World.CreateEntity();
         entity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
@@ -71,8 +71,8 @@ class Program
         entity.Set(new AnimationAxisComponent { Speed = 30f, Axis = Vec3.Up });
     } 
     
-    // Adjust CreateEntityTwo to return an Entity
-    static Entity CreateEntityTwo()
+    // Adjust CreateMovableTextWindow to return an Entity
+    static Entity CreateMovableTextWindow()
     {
         var entity = World.CreateEntity();
         entity.Set(new PoseComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
@@ -81,7 +81,7 @@ class Program
         return entity; // Return the created entity
     }
 
-    static void CreateButtonEntity()
+    static void CreateButton()
     {
         var buttonEntity = World.CreateEntity();
         buttonEntity.Set(new ButtonComponent { Label = "Press Me!", IsPressed = false});
