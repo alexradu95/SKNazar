@@ -25,7 +25,7 @@ namespace Nazar
             }
             _subscriptions.RemoveAll(sub => sub.Subscriber == subscriber);
         }
-        private static List<IDisposable> _subscriptions = new List<IDisposable>();
+        private static List<(IDisposable Subscription, object Subscriber)> _subscriptions = new List<(IDisposable, object)>();
 
         public static IDisposable Subscribe<T>(object subscriber, Action<T> action) where T : struct
         {
