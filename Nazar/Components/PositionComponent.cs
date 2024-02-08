@@ -1,7 +1,6 @@
 namespace Nazar.Components;
 
 public struct PositionComponent
-public struct PositionComponent
 {
     public Pose Value;
 }

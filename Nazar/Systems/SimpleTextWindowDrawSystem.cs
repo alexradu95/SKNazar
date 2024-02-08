@@ -17,13 +17,12 @@ public class SimpleTextWindowDrawSystem : BaseSystem<float>
         foreach (ref readonly var entity in windowsToDraw.GetEntities())
         {
             ref var position = ref entity.Get<PositionComponent>();
+            ref var textContent = ref entity.Get<TextContentsComponent>();
+            UIHandler.DrawTextWindow(ref textContent, ref position);
+
+                        UIHandler.DrawTextWindow(ref textContent, ref position);
 
             UIHandler.DrawTextWindow(ref textContent, ref position);
-            ref var pose = ref entity.Get<PositionComponent>();
-            ref var textContent = ref entity.Get<TextContentsComponent>();
-
-                        UIHandler.DrawTextWindow(ref textContent, ref pose);
-
         }
     }
 }
