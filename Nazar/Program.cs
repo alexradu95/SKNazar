@@ -63,7 +63,7 @@ internal class Program
     {
         var buttonEntity = World.CreateEntity();
         buttonEntity.Set(new ButtonComponent { Label = "Press Me!" });
-        buttonEntity.Set(new PoseComponent { Value = new Pose(0, 0, 1, Quat.Identity) });
+        buttonEntity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
         var output = new OutputComponent
         {
             UniqueId = Guid.NewGuid(),

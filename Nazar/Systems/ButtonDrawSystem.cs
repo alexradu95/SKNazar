@@ -16,7 +16,7 @@ public class ButtonDrawSystem(World world) : ISystem<float>
             ref var button = ref entity.Get<ButtonComponent>();
 
             UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
-            UI.Label(button.Label);
+            UI.Button(button.Label);
             UI.WindowEnd();
         }
     }
