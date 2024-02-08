@@ -11,14 +11,29 @@ namespace Nazar
             _world.Publish(message);
         }
 
-        public static void Subscribe<T>(object subscriber, Action<T> action) where T : struct
+        public static void Subscribe<T>(object subscriber) where T : struct
         {
-            _world.Subscribe<T>(subscriber, action);
+            _world.Subscribe<T>(subscriber);
         }
 
         public static void Unsubscribe(object subscriber)
         {
-            _world.Unsubscribe(subscriber);
+            foreach (var subscription in _subscriptions)
+            {
+                if (subscription.Subscriber == subscriber)
+                {
+                    subscription.Dispose();
+                }
+            }
+            _subscriptions.RemoveAll(sub => sub.Subscriber == subscriber);
+        }
+        private static List<IDisposable> _subscriptions = new List<IDisposable>();
+
+        public static IDisposable Subscribe<T>(object subscriber, Action<T> action) where T : struct
+        {
+            var subscription = _world.Subscribe(subscriber, action);
+            _subscriptions.Add(subscription);
+            return subscription;
         }
     }
 }
