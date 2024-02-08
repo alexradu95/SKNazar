@@ -15,8 +15,8 @@ public class ButtonInteractionSystem : BaseSystem<float>
         {
             ref var button = ref entity.Get<ButtonComponent>();
             // Logic to determine if the button is pressed goes here
-            // If pressed, invoke the action
-            // button.OnPressed?.Invoke();
+            if(button.IsPressed) button.OnPressed?.Invoke();
+            
         }
     }
 }

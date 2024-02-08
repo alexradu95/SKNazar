@@ -1,5 +1,5 @@
 using Nazar.Components;
-using Nazar.UserInterfaces;
+
 
 namespace Nazar.Systems;
 
@@ -20,7 +20,11 @@ namespace Nazar.Systems;
             ref var pose = ref entity.Get<PositionComponent>();
             ref var textContent = ref entity.Get<TextContentsComponent>();
 
-            UIHandler.DrawTextWindow(ref pose, ref textContent);
+            
+                UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
+                UI.Label(textContent.TextContents);
+                UI.WindowEnd();
+
         }
     }
 }
