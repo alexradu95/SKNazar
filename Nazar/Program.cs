@@ -1,4 +1,6 @@
-﻿namespace Nazar;
+﻿using Nazar.Components;
+
+namespace Nazar;
 
 internal class Program
 {

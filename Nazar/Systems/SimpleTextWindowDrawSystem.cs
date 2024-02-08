@@ -1,3 +1,5 @@
+using Nazar.Components;
+
 namespace Nazar.Systems;
 
 public class SimpleTextWindowDrawSystem(World world) : ISystem<float>

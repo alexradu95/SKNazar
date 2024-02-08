@@ -1,4 +1,4 @@
-namespace Nazar.Components.UIElements;
+namespace Nazar.Components;
 
 internal struct ModelComponent
 {

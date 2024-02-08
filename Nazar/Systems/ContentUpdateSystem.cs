@@ -1,11 +1,13 @@
-namespace Nazar.Systems.EntitySystems;
+using Nazar.Components;
 
-public class UpdateTextOnButtonPressSystem : ISystem<float>
+namespace Nazar.Systems.Interactions;
+
+public class ContentUpdateSystem : ISystem<float>
 {
     private readonly IDisposable _buttonPressedSubscription;
     private readonly World _world;
 
-    public UpdateTextOnButtonPressSystem(World world)
+    public ContentUpdateSystem(World world)
     {
         _world = world;
         _buttonPressedSubscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
@@ -15,6 +17,7 @@ public class UpdateTextOnButtonPressSystem : ISystem<float>
 
     public void Update(float state)
     {
+        // Regular update logic (if any)
     }
 
     public void Dispose()
@@ -24,13 +27,15 @@ public class UpdateTextOnButtonPressSystem : ISystem<float>
 
     private void OnButtonPressed(in ButtonPressedMessage message)
     {
-        var textEntities = _world.GetEntities().With<TextContentsComponent>().AsSet();
-        foreach (ref readonly var entity in textEntities.GetEntities())
-            if (entity.Has<AssociatedButtonComponent>() &&
-                entity.Get<AssociatedButtonComponent>().ButtonId == message.ButtonEntityId)
+        var contentEntities = _world.GetEntities().With<IdComponent>().AsSet();
+        foreach (ref readonly var entity in contentEntities.GetEntities())
+        {
+            ref var contentId = ref entity.Get<IdComponent>();
+            if (contentId.Id == message.ButtonEntityId)
             {
                 ref var textContent = ref entity.Get<TextContentsComponent>();
-                textContent.TextContents = $"Button {message.ButtonEntityId} Pressed!";
+                textContent.TextContents = "Updated content for Button ID: " + message.ButtonEntityId;
             }
+        }
     }
 }

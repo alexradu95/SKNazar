@@ -1,4 +1,4 @@
-namespace Nazar.Components.Properties;
+namespace Nazar.Components;
 
 internal struct PoseComponent
 {

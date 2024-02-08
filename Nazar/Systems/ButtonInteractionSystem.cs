@@ -1,3 +1,5 @@
+using Nazar.Components;
+
 namespace Nazar.Systems.Interactions;
 
 public class ButtonInteractionSystem : ISystem<float>
