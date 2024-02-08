@@ -17,7 +17,7 @@ internal class Program
         if (!SK.Initialize(CreateStereoKitSettings())) return false;
 
         CreateEntities();
-        
+
         InitializeSystems();
         return true;
     }
@@ -34,6 +34,7 @@ internal class Program
     private static void InitializeSystems()
     {
         Systems.Add(new ButtonDrawSystem(World));
+        Systems.Add(new ButtonInteractionSystem(World));
         Systems.Add(new TextMessageUpdateSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
     }

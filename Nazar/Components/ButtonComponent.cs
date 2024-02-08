@@ -5,12 +5,7 @@ using System;
 public struct ButtonComponent
 {
     public string Label;
-    public Action OnPressed;
-
-    public void PressButton()
-    {
-        OnPressed?.Invoke();
-    }
+    public Action OnPressed; // This action will be invoked by the ButtonInteractionSystem
 }
 
 /// <summary>
