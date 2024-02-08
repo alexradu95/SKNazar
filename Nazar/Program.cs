@@ -54,7 +54,6 @@ internal class Program
         var input = new InputComponent
         {
             UniqueId = Guid.NewGuid(),
-            Name = "MovableTextWindowInput"
         };
         entity.Set(input);
     }
@@ -67,7 +66,6 @@ internal class Program
         var output = new OutputComponent
         {
             UniqueId = Guid.NewGuid(),
-            Name = "ButtonOutput"
         };
         buttonEntity.Set(output);
         var movableTextWindowEntities = World.GetEntities().With<InputComponent>().With<TextContentsComponent>().AsSet().GetEntities();
