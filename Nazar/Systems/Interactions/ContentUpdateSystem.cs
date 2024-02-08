@@ -1,3 +1,4 @@
+using System;
 using DefaultEcs;
 using DefaultEcs.System;
 using Nazar.Components;
@@ -5,34 +6,35 @@ using Nazar.Messages;
 
 namespace Nazar.Systems;
 
+/// <summary>
+/// System that updates content based on button press messages.
+/// </summary>
 public class ContentUpdateSystem : ISystem<float>
 {
-    private readonly World _world;
+    private readonly DefaultEcs.World _world;
+    private readonly IDisposable _subscription;
 
-    public ContentUpdateSystem(World world)
+    public ContentUpdateSystem(DefaultEcs.World world)
     {
         _world = world;
-        _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
+        _subscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
     }
+
+    public bool IsEnabled { get; set; } = true;
 
     private void OnButtonPressed(in ButtonPressedMessage message)
     {
-        // Example: Update entities associated with the pressed button
-        // This requires a way to link content entities to button IDs, such as a component
         var contentEntities = _world.GetEntities().With<IdComponent>().AsSet();
         foreach (ref readonly Entity entity in contentEntities.GetEntities())
         {
             ref var contentId = ref entity.Get<IdComponent>();
             if (contentId.Id == message.ButtonEntityId)
             {
-                // Found the content entity associated with the pressed button
                 ref var textContent = ref entity.Get<TextContentsComponent>();
                 textContent.TextContents = "Updated content for Button ID: " + message.ButtonEntityId;
             }
         }
     }
-
-    public bool IsEnabled { get; set; } = true;
 
     public void Update(float state)
     {
@@ -41,7 +43,6 @@ public class ContentUpdateSystem : ISystem<float>
 
     public void Dispose()
     {
-        // Unsubscribe to clean up
-        // _world.Unsubscribe<ButtonPressedMessage>(OnButtonPressed);
+        _subscription.Dispose();
     }
 }

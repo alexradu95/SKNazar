@@ -4,15 +4,17 @@ using DefaultEcs.System;
 using Nazar.Components;
 using Nazar.Messages;
 using StereoKit;
-using World = DefaultEcs.World;
 
 namespace Nazar.Systems;
 
+/// <summary>
+/// System that handles interactions with buttons and publishes button press messages.
+/// </summary>
 public class ButtonInteractionSystem : ISystem<float>
 {
-    private readonly World _world;
+    private readonly DefaultEcs.World _world;
 
-    public ButtonInteractionSystem(World world)
+    public ButtonInteractionSystem(DefaultEcs.World world)
     {
         _world = world;
     }
@@ -28,10 +30,13 @@ public class ButtonInteractionSystem : ISystem<float>
             Guid buttonId = entity.Get<IdComponent>().Id;
             if (UI.Button(ui.Label))
             {
-                _world.Publish(new ButtonPressedMessage() { ButtonEntityId = buttonId });
+                _world.Publish(new ButtonPressedMessage { ButtonEntityId = buttonId });
             }
         }
     }
 
-    public void Dispose() { }
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
 }
