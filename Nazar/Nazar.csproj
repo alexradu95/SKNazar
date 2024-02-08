@@ -20,10 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="DefaultEcs" Version="0.18.0-beta01" />
 	  <PackageReference Include="StereoKit" Version="0.3.8" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Leopotam.EcsLite\Leopotam.EcsLite.csproj" />
 	</ItemGroup>
 </Project>

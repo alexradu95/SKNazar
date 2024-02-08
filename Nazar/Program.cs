@@ -1,82 +1,97 @@
-﻿using Leopotam.EcsLite;
+﻿using DefaultEcs;
 using Nazar.Components;
 using Nazar.Systems;
 using StereoKit;
+using System.Collections.Generic;
+using DefaultEcs.System;
+using World = DefaultEcs.World;
 
-class Program 
+class Program
 {
-    private static readonly EcsWorld World = new EcsWorld();
-    private static readonly EcsSystems Systems = new EcsSystems(World);
+    private static readonly World World = new World();
+    private static readonly List<ISystem<float>> Systems = new List<ISystem<float>>();
 
-    static void Main(string[] args) 
+    static void Main(string[] args)
     {
         if (InitializeNazar())
+        {
             RunApplication();
+        }
     }
 
     static bool InitializeNazar()
     {
-        if (InitializeStereoKit()) 
+        if (InitializeStereoKit())
         {
             InitializeEcs();
             CreateEntities();
-            return true;    
+            return true;
         }
         return false;
     }
 
     static bool InitializeStereoKit()
     {
-        return SK.Initialize(new SKSettings 
+        return SK.Initialize(new SKSettings
         {
             appName = "Nazar",
             assetsFolder = "Assets",
         });
     }
 
-    static void InitializeEcs() {
-        Systems
-            .Add(new HandleSystem())
-            .Add(new DrawSystem())
-            .Add(new AnimationSystem())
-            .Add(new InteractionSystem())
-            .Add(new UISystem())
-            .Init();
+    static void InitializeEcs()
+    {
+        // Initialize and store your systems here
+        Systems.Add(new HandleSystem(World));
+        Systems.Add(new DrawSystem(World));
+        Systems.Add(new AnimationSystem(World));
+        Systems.Add(new InteractionSystem(World));
+        Systems.Add(new UISystem(World));
     }
 
-    static void CreateEntities() {
-        var entity = World.NewEntity();
-        ref var poseComponent = ref World.GetPool<PoseComponent>().Add(entity);
-        poseComponent.Value = new Pose(0.2f, 0, -0.5f, Quat.Identity);
-        ref var modelComponent = ref World.GetPool<ModelComponent>().Add(entity);
-        modelComponent.Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.MaterialUI);
-        ref var animationComponent = ref World.GetPool<AnimationComponent>().Add(entity);
-        animationComponent = new AnimationComponent { Speed = 30f, Axis = Vec3.Up };
+    static void CreateEntities()
+    {
+        var entity = World.CreateEntity();
+        entity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
+        entity.Set(new ModelComponent { Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.MaterialUI) });
+        entity.Set(new AnimationComponent { Speed = 30f, Axis = Vec3.Up });
 
-        var interactableEntity = World.NewEntity();
-        ref var interactablePose = ref World.GetPool<PoseComponent>().Add(interactableEntity);
-        interactablePose.Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity);
-        ref var interactableModel = ref World.GetPool<ModelComponent>().Add(interactableEntity);
-        interactableModel.Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.Material);
-        World.GetPool<InteractableComponent>().Add(interactableEntity); // No need to assign a value to a marker component
+        // Correct entity references for entityTwo and buttonEntity
+        var entityTwo = World.CreateEntity();
+        entityTwo.Set(new PoseComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
+        entityTwo.Set(new ModelComponent { Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.MaterialUnlit) });
+        entityTwo.Set(new InteractableComponent());
 
-        var uiEntity = World.NewEntity();
-        ref var uiComponent = ref World.GetPool<UIComponent>().Add(uiEntity);
-        uiComponent = new UIComponent { Label = "Press Me!", OnClick = () => System.Console.WriteLine("Button Pressed!") };
-        
-        
+        var buttonEntity = World.CreateEntity();
+        buttonEntity.Set(new ButtonComponent { Label = "Press Me!", OnClick = () => System.Console.WriteLine("Button Pressed!") });
     }
-    
+
     static void RunApplication()
     {
-        SK.Run(() => Systems.Run());
+        // Manually run each system in the update loop
+        SK.Run(() =>
+        {
+            float deltaTime = Time.Stepf;
+            foreach (var system in Systems)
+            {
+                if (system.IsEnabled)
+                {
+                    system.Update(deltaTime);
+                }
+            }
+        });
+
         Cleanup();
     }
-    
+
     static void Cleanup()
     {
-        Systems.Destroy();
-        World.Destroy();
+        // Dispose systems if necessary
+        foreach (var system in Systems)
+        {
+            system.Dispose();
+        }
+        World.Dispose();
         SK.Shutdown();
     }
 }

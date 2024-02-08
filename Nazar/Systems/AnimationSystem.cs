@@ -1,20 +1,29 @@
-using Leopotam.EcsLite;
+using DefaultEcs;
+using DefaultEcs.System;
 using Nazar.Components;
 using StereoKit;
+using World = DefaultEcs.World;
 
 namespace Nazar.Systems;
 
-class AnimationSystem : IEcsRunSystem {
-    public void Run(IEcsSystems systems) {
-        var world = systems.GetWorld();
-        var posePool = world.GetPool<PoseComponent>();
-        var animPool = world.GetPool<AnimationComponent>();
+public class AnimationSystem : ISystem<float> {
+    private readonly World _world;
 
-        foreach (var entity in world.Filter<PoseComponent>().Inc<AnimationComponent>().End()) {
-            ref var pose = ref posePool.Get(entity);
-            ref var anim = ref animPool.Get(entity);
-            
+    public AnimationSystem(World world) {
+        _world = world;
+    }
+
+    public bool IsEnabled { get; set; } = true;
+
+    public void Update(float state) {
+        var poseSet = _world.GetEntities().With<PoseComponent>().With<AnimationComponent>().AsSet();
+        foreach (ref readonly Entity entity in poseSet.GetEntities()) {
+            ref var pose = ref entity.Get<PoseComponent>();
+            ref readonly var anim = ref entity.Get<AnimationComponent>();
+
             pose.Value.orientation *= Quat.FromAngles(anim.Axis * (anim.Speed * Time.Stepf));
         }
     }
+
+    public void Dispose() { }
 }

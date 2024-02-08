@@ -1,28 +1,29 @@
-using Leopotam.EcsLite;
+using DefaultEcs;
+using DefaultEcs.System;
 using Nazar.Components;
 using StereoKit;
+using World = DefaultEcs.World;
 
 namespace Nazar.Systems;
 
-class HandleSystem : IEcsRunSystem {
-    public void Run(IEcsSystems systems)
-    {
-        var world = systems.GetWorld();
-        var posePool = world.GetPool<PoseComponent>();
-        var modelPool = world.GetPool<ModelComponent>();
+public class HandleSystem : ISystem<float> {
+    private readonly World _world;
 
-        foreach (var entity in world.Filter<PoseComponent>().Inc<ModelComponent>().End()) {
-            ref var pose = ref posePool.Get(entity);
-            ref var model = ref modelPool.Get(entity);
+    public HandleSystem(World world) {
+        _world = world;
+    }
+
+    public bool IsEnabled { get; set; } = true;
+
+    public void Update(float state) {
+        var handleSet = _world.GetEntities().With<PoseComponent>().With<ModelComponent>().AsSet();
+        foreach (ref readonly Entity entity in handleSet.GetEntities()) {
+            ref var pose = ref entity.Get<PoseComponent>();
+            ref readonly var model = ref entity.Get<ModelComponent>();
 
             UI.Handle("Cube", ref pose.Value, model.Value.Bounds);
         }
     }
+
+    public void Dispose() { }
 }
-
-
-
-
-
-
-
