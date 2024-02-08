@@ -37,10 +37,13 @@
 ## Project State and Tasks:
 This section will serve as a dynamic task tracker, similar to a Jira board, to keep track of the current state of the project and upcoming tasks.
 
-- [ ] Implement a visual connection system for entities.
-- [ ] Refactor existing systems to align with the new modular and dynamic architecture.
-- [ ] Document all public APIs and provide examples for extending the application.
-- [ ] Continuously update this guide to reflect the latest state of the project and development practices.
+- [x] Organize files into appropriate directories.
+- [x] Remove unnecessary `Dispose` methods from systems.
+- [ ] Design and implement a system for visually connecting entity outputs to inputs, ensuring modularity and dynamic behavior.
+- [x] Establish a base system class or interface for common system functionality.
+- [ ] Design a robust and flexible system for dynamic entity connections.
+- [ ] Update documentation to reflect changes and provide usage examples.
+- [ ] Ensure all systems and components follow best coding practices.
 
 Note: This document should be updated regularly to reflect the current state of the project and any new requirements or changes in direction.
 ```
