@@ -36,7 +36,6 @@ internal class Program
     {
         Systems.Add(new ButtonDrawSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
-        Systems.Add(new UpdateTextOnButtonPressSystem(World));
     }
 
     private static void CreateEntities()
