@@ -50,7 +50,7 @@ internal class Program
     private static void CreateMovableTextWindow()
     {
         var entity = World.CreateEntity();
-        entity.Set(new PoseComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
+        entity.Set(new PositionComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
         entity.Set(new TextContentsComponent { TextContents = "test" });
     }
     
@@ -58,7 +58,7 @@ internal class Program
     {
         var buttonEntity = World.CreateEntity();
         buttonEntity.Set(new ButtonComponent { Label = "Press Me!" });
-        buttonEntity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
+        buttonEntity.Set(new PositionComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
     }
 
     private static void RunApplication()
