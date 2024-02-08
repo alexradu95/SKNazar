@@ -1,5 +1,4 @@
 namespace Nazar.Systems.Animations;
-
 public class AnimationRotationOnAxisSystem : ISystem<float>
 {
     private readonly World _world;

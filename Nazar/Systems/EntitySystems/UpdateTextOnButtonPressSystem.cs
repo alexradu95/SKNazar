@@ -1,6 +1,5 @@
 namespace Nazar.Systems.EntitySystems;
 
-/// </summary>
 public class UpdateTextOnButtonPressSystem : ISystem<float>
 {
     private readonly World _world;

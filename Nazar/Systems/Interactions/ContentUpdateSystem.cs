@@ -1,8 +1,5 @@
 namespace Nazar.Systems.Interactions;
 
-/// <summary>
-/// System that updates content based on button press messages.
-/// </summary>
 public class ContentUpdateSystem : ISystem<float>
 {
     private readonly DefaultEcs.World _world;

@@ -1,8 +1,5 @@
 namespace Nazar.Systems.Interactions;
 
-/// <summary>
-/// System that handles interactions with buttons and publishes button press messages.
-/// </summary>
 public class ButtonInteractionSystem : ISystem<float>
 {
     private readonly DefaultEcs.World _world;
