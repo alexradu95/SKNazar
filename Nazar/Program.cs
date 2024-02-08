@@ -72,7 +72,7 @@ internal class Program
         if (movableTextWindowEntities.Length > 0)
         {
             var movableTextWindowEntity = movableTextWindowEntities[0];
-            movableTextWindowEntity.Set(new AssociatedButtonComponent { ButtonId = output.UniqueId });
+            movableTextWindowEntity.Set(new AssociatedEntityComponent() { EntityId = output.UniqueId });
         }
     }
 

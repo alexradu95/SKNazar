@@ -1,6 +1,6 @@
 namespace Nazar.Components;
 
-public struct AssociatedButtonComponent
+public struct AssociatedEntityComponent
 {
-    public Guid ButtonId;
+    public Guid EntityId;
 }
