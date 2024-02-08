@@ -1,10 +1,3 @@
-using System;
-using DefaultEcs;
-using DefaultEcs.System;
-using Nazar.Components.UIElements;
-using Nazar.Messages;
-using StereoKit;
-
 namespace Nazar.Systems.Interactions;
 
 /// <summary>

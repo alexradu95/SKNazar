@@ -1,8 +1,5 @@
-
 namespace Nazar.Systems.EntitySystems;
 
-/// <summary>
-/// System that updates the text on a text entity when a button is pressed.
 /// </summary>
 public class UpdateTextOnButtonPressSystem : ISystem<float>
 {

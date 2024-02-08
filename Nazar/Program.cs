@@ -1,4 +1,7 @@
-﻿namespace Nazar;
+﻿using Nazar.Systems.Animations;
+using Nazar.Systems.EntitySystems;
+
+namespace Nazar;
 
 class Program
 {

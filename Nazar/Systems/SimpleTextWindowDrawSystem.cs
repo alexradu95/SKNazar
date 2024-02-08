@@ -1,3 +1,4 @@
+
 namespace Nazar.Systems;
 
 public class SimpleTextWindowDrawSystem(World world) : ISystem<float>
@@ -11,7 +12,7 @@ public class SimpleTextWindowDrawSystem(World world) : ISystem<float>
             ref var textContent = ref entity.Get<TextContentsComponent>();
 
             UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm, UIWin.Normal);
-                UI.Label(textContent.TextContents);
+            UI.Label(textContent.TextContents);
             UI.WindowEnd();
         }
     }

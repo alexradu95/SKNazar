@@ -1,8 +1,5 @@
 namespace Nazar.Systems.Animations;
 
-/// <summary>
-/// System that applies rotation to entities with an AnimationAxisComponent.
-/// </summary>
 public class AnimationRotationOnAxisSystem : ISystem<float>
 {
     private readonly World _world;

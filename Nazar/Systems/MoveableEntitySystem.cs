@@ -1,3 +1,4 @@
+
 namespace Nazar.Systems;
 
 public class MoveableEntitySystem(World world) : ISystem<float>
