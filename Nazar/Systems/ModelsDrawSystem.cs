@@ -1,6 +1,8 @@
 using DefaultEcs;
 using DefaultEcs.System;
 using Nazar.Components;
+using Nazar.Components.Properties;
+using Nazar.Components.UIElements;
 
 namespace Nazar.Systems;
 

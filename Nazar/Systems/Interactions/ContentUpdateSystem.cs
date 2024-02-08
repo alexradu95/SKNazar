@@ -1,10 +1,10 @@
 using System;
 using DefaultEcs;
 using DefaultEcs.System;
-using Nazar.Components;
+using Nazar.Components.Properties;
 using Nazar.Messages;
 
-namespace Nazar.Systems;
+namespace Nazar.Systems.Interactions;
 
 /// <summary>
 /// System that updates content based on button press messages.

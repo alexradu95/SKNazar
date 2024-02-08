@@ -1,6 +1,6 @@
 using StereoKit;
 
-namespace Nazar.Components;
+namespace Nazar.Components.UIElements;
 
 struct ModelComponent {
     public Model Value;

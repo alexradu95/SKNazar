@@ -1,4 +1,4 @@
-namespace Nazar.Components;
+namespace Nazar.Components.Properties;
 
 public struct TextContentsComponent
 {

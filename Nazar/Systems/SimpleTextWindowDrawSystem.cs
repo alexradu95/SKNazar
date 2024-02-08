@@ -1,6 +1,7 @@
 using DefaultEcs;
 using DefaultEcs.System;
 using Nazar.Components;
+using Nazar.Components.Properties;
 using StereoKit;
 using World = DefaultEcs.World;
 

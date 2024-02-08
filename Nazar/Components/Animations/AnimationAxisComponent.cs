@@ -1,6 +1,6 @@
 using StereoKit;
 
-namespace Nazar.Components;
+namespace Nazar.Components.Animations;
 
 struct AnimationAxisComponent
 {

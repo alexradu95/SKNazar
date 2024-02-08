@@ -1,6 +1,6 @@
 using StereoKit;
 
-namespace Nazar.Components;
+namespace Nazar.Components.Properties;
 
 struct PoseComponent {
     public Pose Value;

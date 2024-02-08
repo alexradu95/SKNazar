@@ -1,6 +1,4 @@
-using System;
-
-namespace Nazar.Components;
+namespace Nazar.Components.UIElements;
 
 struct ButtonComponent {
     public string Label;

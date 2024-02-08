@@ -1,10 +1,11 @@
 using DefaultEcs;
 using DefaultEcs.System;
-using Nazar.Components;
+using Nazar.Components.Animations;
+using Nazar.Components.Properties;
 using StereoKit;
 using World = DefaultEcs.World;
 
-namespace Nazar.Systems;
+namespace Nazar.Systems.Animations;
 
 /// <summary>
 /// System that applies rotation to entities with an AnimationAxisComponent.

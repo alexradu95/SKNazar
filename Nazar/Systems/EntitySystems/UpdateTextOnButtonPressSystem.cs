@@ -1,10 +1,10 @@
 using System;
 using DefaultEcs;
 using DefaultEcs.System;
-using Nazar.Components;
+using Nazar.Components.Properties;
 using Nazar.Messages;
 
-namespace Nazar.Systems;
+namespace Nazar.Systems.EntitySystems;
 
 /// <summary>
 /// System that updates the text on a text entity when a button is pressed.
