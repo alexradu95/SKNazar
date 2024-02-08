@@ -13,7 +13,7 @@ namespace Nazar
 
         public static void Subscribe<T>(object subscriber, Action<T> action) where T : struct
         {
-            _world.Subscribe(subscriber, action);
+            _world.Subscribe<T>(subscriber, action);
         }
 
         public static void Unsubscribe(object subscriber)
