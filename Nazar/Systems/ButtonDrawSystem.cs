@@ -1,4 +1,5 @@
 using Nazar.Components;
+using PubSub;
 
 namespace Nazar.Systems;
 
@@ -16,7 +17,10 @@ public class ButtonDrawSystem(World world) : ISystem<float>
             ref var button = ref entity.Get<ButtonComponent>();
 
             UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
-            UI.Button(button.Label);
+            if (UI.Button(button.Label))
+            {
+                Hub.Default.Publish(new ButtonPressedMessage() { Message = "Button Pressed!"});
+            }
             UI.WindowEnd();
         }
     }
