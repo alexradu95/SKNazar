@@ -3,12 +3,12 @@ namespace Nazar.Systems.Interactions;
 public class ContentUpdateSystem : ISystem<float>
 {
     private readonly DefaultEcs.World _world;
-    private readonly IDisposable _subscription;
+    private readonly IDisposable _buttonPressedSubscription;
 
     public ContentUpdateSystem(DefaultEcs.World world)
     {
         _world = world;
-        _subscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
+        _buttonPressedSubscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
     }
 
     public bool IsEnabled { get; set; } = true;
@@ -34,6 +34,6 @@ public class ContentUpdateSystem : ISystem<float>
 
     public void Dispose()
     {
-        _subscription.Dispose();
+        _buttonPressedSubscription.Dispose();
     }
 }

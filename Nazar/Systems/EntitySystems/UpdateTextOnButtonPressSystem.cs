@@ -5,14 +5,15 @@ public class UpdateTextOnButtonPressSystem : ISystem<float>
     private readonly World _world;
     private readonly Entity _textEntity;
     private int _numberOfPresses;
-    private readonly IDisposable _subscription;
+    private readonly IDisposable _buttonPressedSubscription;
 
     public UpdateTextOnButtonPressSystem(DefaultEcs.World world, Entity textEntity)
     {
         _world = world;
         _textEntity = textEntity;
-        _subscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
+        _buttonPressedSubscription = _world.Subscribe<ButtonPressedMessage>(OnButtonPressed);
     }
+    
 
     public bool IsEnabled { get; set; } = true;
 
@@ -30,6 +31,6 @@ public class UpdateTextOnButtonPressSystem : ISystem<float>
 
     public void Dispose()
     {
-        _subscription.Dispose();
+        _buttonPressedSubscription.Dispose();
     }
 }
