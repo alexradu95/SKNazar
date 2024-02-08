@@ -35,6 +35,7 @@ internal class Program
     private static void InitializeSystems()
     {
         Systems.Add(new ButtonDrawSystem(World));
+        Systems.Add(new TextMessageUpdateSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
     }
 

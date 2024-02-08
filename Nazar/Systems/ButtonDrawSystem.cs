@@ -19,7 +19,7 @@ public class ButtonDrawSystem(World world) : ISystem<float>
             if (UI.Button(button.Label))
             {
                 // publish a new ButtonPressedMessage into the world
-                //Hub.Default.Publish(new ButtonPressedMessage() { Message = "Button Pressed!"});
+                world.Publish(new ButtonPressedMessage() { Message = "Button Pressed!" });
             }
             UI.WindowEnd();
         }
