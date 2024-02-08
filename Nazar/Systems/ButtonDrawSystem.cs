@@ -1,5 +1,4 @@
 using Nazar.Components;
-using PubSub;
 
 namespace Nazar.Systems;
 
@@ -19,7 +18,8 @@ public class ButtonDrawSystem(World world) : ISystem<float>
             UI.WindowBegin("Window", ref pose.Value, new Vec2(20, 0) * U.cm);
             if (UI.Button(button.Label))
             {
-                Hub.Default.Publish(new ButtonPressedMessage() { Message = "Button Pressed!"});
+                // publish a new ButtonPressedMessage into the world
+                //Hub.Default.Publish(new ButtonPressedMessage() { Message = "Button Pressed!"});
             }
             UI.WindowEnd();
         }
