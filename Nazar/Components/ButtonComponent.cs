@@ -4,5 +4,5 @@ namespace Nazar.Components;
 
 struct ButtonComponent {
     public string Label;
-    public Action OnClick;
+    public bool IsPressed;
 }
