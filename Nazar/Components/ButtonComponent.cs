@@ -2,7 +2,7 @@ using System;
 
 namespace Nazar.Components;
 
-struct UIComponent {
+struct ButtonComponent {
     public string Label;
     public Action OnClick;
 }
