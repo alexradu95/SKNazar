@@ -1,11 +1,3 @@
-using DefaultEcs;
-using DefaultEcs.System;
-using Nazar.Components;
-using Nazar.Components.Behaviours;
-using Nazar.Components.Properties;
-using StereoKit;
-using World = DefaultEcs.World;
-
 namespace Nazar.Systems;
 
 public class MoveableEntitySystem(World world) : ISystem<float>

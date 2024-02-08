@@ -1,8 +1,3 @@
-using System;
-using DefaultEcs;
-using DefaultEcs.System;
-using Nazar.Components.Properties;
-using Nazar.Messages;
 
 namespace Nazar.Systems.EntitySystems;
 

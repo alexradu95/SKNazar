@@ -1,20 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DefaultEcs;
-using DefaultEcs.System;
-using Nazar.Components.Animations;
-using Nazar.Components.Behaviours;
-using Nazar.Components.Properties;
-using Nazar.Components.UIElements;
-using Nazar.Messages;
-using Nazar.Systems;
-using Nazar.Systems.Animations;
-using Nazar.Systems.EntitySystems;
-using Nazar.Systems.Interactions;
-using StereoKit;
-using World = DefaultEcs.World;
-
-namespace Nazar;
+﻿namespace Nazar;
 
 class Program
 {
