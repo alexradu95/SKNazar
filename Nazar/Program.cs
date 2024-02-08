@@ -1,4 +1,6 @@
-﻿using Nazar.Components;
+using System.Linq;
+﻿using System.Linq;
+using Nazar.Components;
 
 namespace Nazar;
 
@@ -32,41 +34,49 @@ internal class Program
 
     private static void InitializeSystems()
     {
-        Systems.Add(new ModelsDrawSystem(World));
-        Systems.Add(new MoveableEntitySystem(World));
-        Systems.Add(new ButtonInteractionSystem(World));
+        Systems.Add(new ButtonDrawSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
         Systems.Add(new UpdateTextOnButtonPressSystem(World));
     }
 
     private static void CreateEntities()
     {
-        CreateCube();
-        CreateMovableTextWindow();
         CreateButton();
+        CreateMovableTextWindow();
     }
 
-    private static void CreateCube()
-    {
-        var entity = World.CreateEntity();
-        entity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
-        entity.Set(new ModelComponent
-            { Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.MaterialUI) });
-    }
-
+    // Create a moveable window that has an input a string value
+    // Each input/output will contain an unique_id, it's name, it's dataType and the entity is it assigned to
     private static void CreateMovableTextWindow()
     {
         var entity = World.CreateEntity();
         entity.Set(new PoseComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
-        entity.Set(new MoveableComponent());
         entity.Set(new TextContentsComponent { TextContents = "test" });
+        var input = new InputComponent
+        {
+            UniqueId = Guid.NewGuid(),
+            Name = "MovableTextWindowInput"
+        };
+        entity.Set(input);
     }
-
+    
     private static void CreateButton()
     {
         var buttonEntity = World.CreateEntity();
         buttonEntity.Set(new ButtonComponent { Label = "Press Me!" });
-        buttonEntity.Set(new IdComponent { Id = Guid.NewGuid() });
+        buttonEntity.Set(new PoseComponent { Value = new Pose(0, 0, 1, Quat.Identity) });
+        var output = new OutputComponent
+        {
+            UniqueId = Guid.NewGuid(),
+            Name = "ButtonOutput"
+        };
+        buttonEntity.Set(output);
+        var movableTextWindowEntities = World.GetEntities().With<InputComponent>().With<TextContentsComponent>().AsSet().GetEntities();
+        if (movableTextWindowEntities.Length > 0)
+        {
+            var movableTextWindowEntity = movableTextWindowEntities[0];
+            movableTextWindowEntity.Set(new AssociatedButtonComponent { ButtonId = output.UniqueId });
+        }
     }
 
     private static void RunApplication()
