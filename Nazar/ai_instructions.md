@@ -18,13 +18,7 @@
 - Use DefaultEcs.World instead of StereoKit.World
 
 ## Refactoring Objectives:
-- Ensure the directory structure is following good architectural practices.
-- Implement a message passing mechanism using the DefaultEcs `Publish` and `Subscribe` methods to allow systems to communicate with each other.
-- Abstract UI code from systems to a separate UI handler class.
-- Implement an entity factory for creating entities with components.
 - Organize files into appropriate directories.
-- Add XML documentation comments to public APIs.
-- Rename `PoseComponent` to `PositionComponent` for consistency.
 - Remove unnecessary `Dispose` methods from systems.
 - Establish a base system class or interface for common system functionality.
 - Design a robust and flexible system for dynamic entity connections.
