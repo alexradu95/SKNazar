@@ -1,11 +1,6 @@
-using StereoKit;
-
 namespace Nazar.Components.UIElements;
 
-struct ModelComponent {
+internal struct ModelComponent
+{
     public Model Value;
 }
-
-
-
-

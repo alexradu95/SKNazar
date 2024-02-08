@@ -1,3 +1,5 @@
 namespace Nazar.Components.Behaviours;
 
-struct MoveableComponent { }
+internal struct MoveableComponent
+{
+}

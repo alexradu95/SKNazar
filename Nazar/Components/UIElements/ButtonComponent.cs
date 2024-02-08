@@ -1,6 +1,7 @@
 namespace Nazar.Components.UIElements;
 
-struct ButtonComponent {
+internal struct ButtonComponent
+{
     public string Label;
     public bool IsPressed;
 }

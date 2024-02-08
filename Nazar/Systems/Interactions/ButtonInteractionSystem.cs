@@ -2,9 +2,9 @@ namespace Nazar.Systems.Interactions;
 
 public class ButtonInteractionSystem : ISystem<float>
 {
-    private readonly DefaultEcs.World _world;
+    private readonly World _world;
 
-    public ButtonInteractionSystem(DefaultEcs.World world)
+    public ButtonInteractionSystem(World world)
     {
         _world = world;
     }
@@ -14,14 +14,11 @@ public class ButtonInteractionSystem : ISystem<float>
     public void Update(float state)
     {
         var buttonSet = _world.GetEntities().With<ButtonComponent>().With<IdComponent>().AsSet();
-        foreach (ref readonly Entity entity in buttonSet.GetEntities())
+        foreach (ref readonly var entity in buttonSet.GetEntities())
         {
             ref var ui = ref entity.Get<ButtonComponent>();
-            Guid buttonId = entity.Get<IdComponent>().Id;
-            if (UI.Button(ui.Label))
-            {
-                _world.Publish(new ButtonPressedMessage { ButtonEntityId = buttonId });
-            }
+            var buttonId = entity.Get<IdComponent>().Id;
+            if (UI.Button(ui.Label)) _world.Publish(new ButtonPressedMessage { ButtonEntityId = buttonId });
         }
     }
 
