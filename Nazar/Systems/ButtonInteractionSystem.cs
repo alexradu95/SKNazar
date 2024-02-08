@@ -14,8 +14,12 @@ public class ButtonInteractionSystem : BaseSystem<float>
         foreach (ref readonly var entity in buttonEntities.GetEntities())
         {
             ref var button = ref entity.Get<ButtonComponent>();
-            // Logic to determine if the button is pressed goes here
-            if(button.IsPressed) button.OnPressed?.Invoke();
+            if (button.IsPressed)
+            {
+                // Publish a ButtonPressedMessage when the button is pressed
+                World.Publish(new ButtonPressedMessage { Message = button.Label + " pressed" });
+                button.IsPressed = false; // Reset the IsPressed state
+            }
             
         }
     }
