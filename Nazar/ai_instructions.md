@@ -20,9 +20,5 @@
 - Use DefaultEcs.World instead of StereoKit.World
 
 ## Refactoring Objectives:
-- Extract message publishing from interaction systems.
-- Simplify or remove `Dispose` methods where possible.
-- Implement dependency injection for system dependencies.
-- Review and optimize entity creation patterns.
-- Ensure code is well-documented and follows consistent style guidelines.
+- Ensure the directory structure is following good architectural practices.
 ```

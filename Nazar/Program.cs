@@ -1,7 +1,4 @@
-﻿using Nazar.Systems.Animations;
-using Nazar.Systems.EntitySystems;
-
-namespace Nazar;
+﻿namespace Nazar;
 
 class Program
 {
@@ -40,34 +37,32 @@ class Program
     static void InitializeSystems()
     {
         Systems.Add(new ModelsDrawSystem(World));
-        Systems.Add(new AnimationRotationOnAxisSystem(World));
         Systems.Add(new MoveableEntitySystem(World));
         Systems.Add(new ButtonInteractionSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
-        Systems.Add(new UpdateTextOnButtonPressSystem(World, CreateMovableTextWindow()));
+        Systems.Add(new UpdateTextOnButtonPressSystem(World));
     }
 
     static void CreateEntities()
     {
-        CreateRotatingCube();
+        CreateCube();
+        CreateMovableTextWindow();
         CreateButton();
     }
 
-    static void CreateRotatingCube()
+    static void CreateCube()
     {
         var entity = World.CreateEntity();
         entity.Set(new PoseComponent { Value = new Pose(0.2f, 0, -0.5f, Quat.Identity) });
         entity.Set(new ModelComponent { Value = Model.FromMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), Default.MaterialUI) });
-        entity.Set(new AnimationAxisComponent { Speed = 30f, Axis = Vec3.Up });
     }
 
-    static Entity CreateMovableTextWindow()
+    static void CreateMovableTextWindow()
     {
         var entity = World.CreateEntity();
         entity.Set(new PoseComponent { Value = new Pose(-0.2f, 0, -0.5f, Quat.Identity) });
         entity.Set(new MoveableComponent());
         entity.Set(new TextContentsComponent { TextContents = "test" });
-        return entity;
     }
 
     static void CreateButton()
