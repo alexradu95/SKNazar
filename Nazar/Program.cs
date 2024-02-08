@@ -53,7 +53,6 @@ class Program
         Systems.Add(new MoveableEntitySystem(World));
         Systems.Add(new ButtonInteractionSystem(World));
         Systems.Add(new SimpleTextWindowDrawSystem(World));
-        // Initialize UpdateTextOnButtonPressSystem with entityTwo
         Systems.Add(new UpdateTextOnButtonPressSystem(World, entityTwo));
     }
 
