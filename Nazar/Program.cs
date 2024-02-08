@@ -42,7 +42,7 @@ internal class Program
     private static void CreateEntities()
     {
         EntityFactory.CreateButton(World, "Press Me!", new Pose(0.2f, 0, -0.5f, Quat.Identity));
-        EntityFactory.CreateTextWindow(World, "test", new Pose(-0.2f, 0, -0.5f, Quat.Identity));
+        EntityFactory.CreateTextWindow(World, "test", new Position(-0.2f, 0, -0.5f, Quat.Identity));
     }
 
     private static void RunApplication()

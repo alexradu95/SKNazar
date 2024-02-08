@@ -1,10 +1,12 @@
 namespace Nazar.Components;
 
 public struct PositionComponent
+public struct PositionComponent
 {
     public Pose Value;
 }
 
 /// <summary>
+/// Represents the position of an entity in the world.
 /// Represents the position of an entity in the world.
 /// </summary>

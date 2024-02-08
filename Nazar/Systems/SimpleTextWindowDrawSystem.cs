@@ -16,6 +16,9 @@ public class SimpleTextWindowDrawSystem : BaseSystem<float>
         var windowsToDraw = World.GetEntities().With<PositionComponent>().With<TextContentsComponent>().AsSet();
         foreach (ref readonly var entity in windowsToDraw.GetEntities())
         {
+            ref var position = ref entity.Get<PositionComponent>();
+
+            UIHandler.DrawTextWindow(ref textContent, ref position);
             ref var pose = ref entity.Get<PositionComponent>();
             ref var textContent = ref entity.Get<TextContentsComponent>();
 
