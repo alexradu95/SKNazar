@@ -21,7 +21,7 @@ namespace Nazar
         {
             foreach (var subscription in _subscriptions)
             {
-                    subscription.Dispose();
+                    subscription.();
             }
             _subscriptions.RemoveAll(sub => sub.Subscriber == subscriber);
         }
