@@ -19,7 +19,7 @@ public static class ApplicationInitializer
         systems = [];
 
         CreateDemoEntities(world);
-        SetupHandMenu(world);
+        HandMenuInitializer.SetupHandMenu(world);
         SystemsInitializer.InitializeSystems(world, systems);
 
         return true;
@@ -38,21 +38,6 @@ public static class ApplicationInitializer
     {
         // Existing entity creation code...
     }
-
-    private static void SetupHandMenu(World world)
-    {
-        HandMenuRadial handMenu = new HandMenuRadial(
-            new HandRadialLayer("Create Entities",
-                new HandMenuItem("Create Button", null, () => CreateButtonEntity(world)),
-                new HandMenuItem("Create Text Window", null, () => CreateTextWindowEntity(world)),
-                new HandMenuItem("Create Mesh", null, () => CreateMeshEntity(world)),
-                new HandMenuItem("Create Model", null, () => CreateModelEntity(world)),
-                new HandMenuItem("Create Text", null, () => CreateTextEntity(world)),
-                new HandMenuItem("Create Line", null, () => CreateLineEntity(world)),
-                new HandMenuItem("Close", null, null, HandMenuAction.Close)));
-        SK.AddStepper(handMenu);
-    }
-
     private static void CreateButtonEntity(World world)
     {
         world.CreateEntity().WithButton("New Button")
