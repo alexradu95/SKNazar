@@ -8,6 +8,12 @@ public class ButtonPressedMessageHandler : ISystem<float>
     private readonly World _world;
     private readonly EntitySet _textEntities;
     private readonly IDisposable _messageSubscription;
+    private ButtonPressedMessage _currentMessage;
+
+    private bool MatchesEventName(SubscriberComponent component)
+    {
+        return component.EventName == _currentMessage.EventName;
+    }
 
     public ButtonPressedMessageHandler(World world)
     {
@@ -23,7 +29,8 @@ public class ButtonPressedMessageHandler : ISystem<float>
 
     private void HandleButtonPressedMessage(in ButtonPressedMessage message)
     {
-        var subscribedEntities = _world.GetEntities().With<SubscriberComponent>(c => c.EventName == message.EventName).With<TextContentsComponent>().AsSet();
+        _currentMessage = message;
+        var subscribedEntities = _world.GetEntities().With<SubscriberComponent>(MatchesEventName).With<TextContentsComponent>().AsSet();
         foreach (ref readonly var entity in subscribedEntities.GetEntities())
         {
             ref var textContent = ref entity.Get<TextContentsComponent>();
