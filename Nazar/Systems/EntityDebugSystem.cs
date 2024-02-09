@@ -32,6 +32,8 @@ public class EntityDebugSystem : ISystem<float>
         }
     }
 
+    public bool IsEnabled { get; set; }
+
     public void Dispose()
     {
         // Cleanup if necessary
