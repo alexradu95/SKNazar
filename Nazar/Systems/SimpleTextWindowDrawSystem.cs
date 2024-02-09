@@ -16,12 +16,6 @@ public class SimpleTextWindowDrawSystem(World world) : BaseSystem<float>(world)
             ref var position = ref entity.Get<PositionComponent>();
             ref var textContent = ref entity.Get<TextContentsComponent>();
             UIHandler.DrawTextWindow(ref textContent, ref position);
-
-            UIHandler.DrawTextWindow(ref textContent, ref position);
-
-            UIHandler.DrawTextWindow(ref textContent, ref position);
-
-            UIHandler.DrawTextWindow(ref textContent, ref position);
         }
     }
 }
