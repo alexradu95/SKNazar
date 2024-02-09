@@ -39,6 +39,18 @@ public static class ApplicationInitializer
         var textWindow1 = EntityFactory.CreateTextWindow(world, "test", new Pose(-0.2f, 0, -0.5f, Quat.Identity));
         textWindow1.Set(new SubscriberComponent { EventName = "Button1Pressed" });
 
+        // Example Mesh entity
+        var meshEntity = EntityFactory.CreateMesh(world, Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f), new Pose(0.6f, 0, -0.5f, Quat.Identity));
+
+        // Example Model entity
+        var modelEntity = EntityFactory.CreateModel(world, new Model("Assets/Models/example_model.glb"), new Pose(0.8f, 0, -0.5f, Quat.Identity));
+
+        // Example Text entity
+        var textEntity = EntityFactory.CreateText(world, "Example Text", new Pose(-0.6f, 0, -0.5f, Quat.Identity));
+
+        // Example Line entity
+        var lineEntity = EntityFactory.CreateLine(world, new Vec3(-0.8f, 0, -0.5f), new Vec3(-0.8f, 0.1f, -0.5f));
+
         var button2 = EntityFactory.CreateButton(world, "Press Me Too!", new Pose(0.4f, 0, -0.5f, Quat.Identity));
         button2.Set(new SubscriberComponent { EventName = "Button2Pressed" });
         var textWindow2 = EntityFactory.CreateTextWindow(world, "new text window", new Pose(-0.4f, 0, -0.5f, Quat.Identity));
