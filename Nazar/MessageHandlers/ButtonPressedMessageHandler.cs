@@ -23,7 +23,8 @@ public class ButtonPressedMessageHandler : ISystem<float>
 
     private void HandleButtonPressedMessage(in ButtonPressedMessage message)
     {
-        foreach (var entity in _textEntities.GetEntities())
+        var subscribedEntities = _world.GetEntities().With<SubscriberComponent>().With<TextContentsComponent>().AsSet();
+        foreach (var entity in subscribedEntities.GetEntities())
         {
             ref var textContent = ref entity.Get<TextContentsComponent>();
             textContent.TextContents = message.Message;

@@ -34,7 +34,8 @@ public static class ApplicationInitializer
     private static void CreateEntities(World world)
     {
         EntityFactory.CreateButton(world, "Press Me!", new Pose(0.2f, 0, -0.5f, Quat.Identity));
-        EntityFactory.CreateTextWindow(world, "test", new Pose(-0.2f, 0, -0.5f, Quat.Identity));
+        var textWindow1 = EntityFactory.CreateTextWindow(world, "test", new Pose(-0.2f, 0, -0.5f, Quat.Identity));
+        textWindow1.Set(new SubscriberComponent { EventName = "ButtonPressed" });
         EntityFactory.CreateTextWindow(world, "new text window", new Pose(-0.4f, 0, -0.5f, Quat.Identity));
     }
 }
