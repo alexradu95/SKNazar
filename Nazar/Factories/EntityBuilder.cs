@@ -3,62 +3,49 @@ using Nazar.Components;
 
 namespace Nazar.Factories;
 
-public class EntityBuilder
+public static class EntityBuilderExtensions
 {
-    private readonly World _world;
-    private readonly Entity _entity;
-
-    public EntityBuilder(World world)
+    public static Entity WithTransform(this Entity entity, Pose? position = null)
     {
-        _world = world;
-        _entity = _world.CreateEntity();
+        entity.Set(new TransformComponent { Position = position ?? new Pose(0, 0, 0, Quat.Identity) });
+        return entity;
     }
 
-    public EntityBuilder WithTransform(Pose? position = null)
+    public static Entity WithButton(this Entity entity, string label)
     {
-        _entity.Set(new TransformComponent { Position = position ?? new Pose(0, 0, 0, Quat.Identity) });
-        return this;
+        entity.Set(new ButtonComponent());
+        entity.Set(new TextContentsComponent { TextContents = label ?? "Default Label" });
+        return entity;
     }
 
-    public EntityBuilder WithButton(string label)
+    public static Entity WithTextWindow(this Entity entity)
     {
-        _entity.Set(new ButtonComponent());
-        _entity.Set(new TextContentsComponent { TextContents = label ?? "Default Label" });
-        return this;
+        entity.Set(new WindowComponent());
+        return entity;
     }
 
-    public EntityBuilder WithTextWindow()
+    public static Entity WithMesh(this Entity entity, Mesh mesh)
     {
-        _entity.Set(new WindowComponent());
-        return this;
+        entity.Set(new MeshComponent { Mesh = mesh });
+        return entity;
     }
 
-    public EntityBuilder WithMesh(Mesh mesh)
+    public static Entity WithModel(this Entity entity, Model model)
     {
-        _entity.Set(new MeshComponent { Mesh = mesh });
-        return this;
+        entity.Set(new ModelComponent { Model = model });
+        return entity;
     }
 
-    public EntityBuilder WithModel(Model model)
+    public static Entity WithText(this Entity entity, string content)
     {
-        _entity.Set(new ModelComponent { Model = model });
-        return this;
+        entity.Set(new TextComponent { Content = content });
+        return entity;
     }
 
-    public EntityBuilder WithText(string content)
+    public static Entity WithLine(this Entity entity, Vec3 start, Vec3 end)
     {
-        _entity.Set(new TextComponent { Content = content });
-        return this;
+        entity.Set(new LineComponent { Start = start, End = end });
+        return entity;
     }
 
-    public EntityBuilder WithLine(Vec3 start, Vec3 end)
-    {
-        _entity.Set(new LineComponent { Start = start, End = end });
-        return this;
-    }
-
-    public Entity Build()
-    {
-        return _entity;
-    }
 }
