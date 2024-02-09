@@ -19,7 +19,7 @@ public class EntityDebugSystem : ISystem<float>
         foreach (ref readonly var entity in allEntities.GetEntities())
         {
             StringBuilder componentList = new StringBuilder();
-            componentList.AppendLine($"Entity {entity.EntityId}:");
+            componentList.AppendLine($"Entity");
 
             foreach (var componentType in entity.GetComponentTypes())
             {
@@ -29,6 +29,7 @@ public class EntityDebugSystem : ISystem<float>
 
             // Draw the debug window with the component list
             // This is a placeholder, replace with actual UI drawing code
+            UI.WindowBegin("Debug", );
             Debug.DrawWindow(componentList.ToString());
         }
     }
