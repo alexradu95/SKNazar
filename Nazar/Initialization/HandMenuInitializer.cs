@@ -23,9 +23,7 @@ public static class HandMenuInitializer
         SK.AddStepper(handMenu);
     }
 
-    // ... other methods remain unchanged ...
-}
-    private static void CreateButtonEntity(World world)
+    static void CreateButtonEntity(World world)
     {
         world.CreateEntity().WithButton("New Button")
             .WithTransform(new Pose(0.0f, 0, -0.5f, Quat.Identity))
@@ -39,13 +37,13 @@ public static class HandMenuInitializer
             .WithSubscriber("ButtonPressed");
     }
 
-    private static void CreateMeshEntity(World world)
+    static void CreateMeshEntity(World world)
     {
         world.CreateEntity().WithMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f))
             .WithTransform(new Pose(0.3f, 0, -0.5f, Quat.Identity));
     }
 
-    private static void CreateModelEntity(World world)
+    static void CreateModelEntity(World world)
     {
         world.CreateEntity().WithModel(Model.FromFile("StereoKit.glb"))
             .WithTransform(new Pose(0.6f, 0, -0.5f, Quat.Identity));
@@ -62,3 +60,4 @@ public static class HandMenuInitializer
         world.CreateEntity().WithLine(new Vec3(-1.2f, 0, -0.5f), new Vec3(-1.2f, 0.1f, -0.5f));
     }
 }
+    
