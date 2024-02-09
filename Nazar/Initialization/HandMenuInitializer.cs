@@ -19,6 +19,41 @@ public static class HandMenuInitializer
         SK.AddStepper(handMenu);
     }
 
-    // The entity creation methods will be moved here as well.
-    // ...
+    private static void CreateButtonEntity(World world)
+    {
+        world.CreateEntity().WithButton("New Button")
+            .WithTransform(new Pose(0.0f, 0, -0.5f, Quat.Identity))
+            .WithSubscriber("ButtonPressed");
+    }
+
+    private static void CreateTextWindowEntity(World world)
+    {
+        world.CreateEntity().WithTextWindow()
+            .WithTransform(new Pose(-0.3f, 0, -0.5f, Quat.Identity))
+            .WithSubscriber("ButtonPressed");
+    }
+
+    private static void CreateMeshEntity(World world)
+    {
+        world.CreateEntity().WithMesh(Mesh.GenerateRoundedCube(Vec3.One * 0.1f, 0.02f))
+            .WithTransform(new Pose(0.3f, 0, -0.5f, Quat.Identity));
+    }
+
+    private static void CreateModelEntity(World world)
+    {
+        world.CreateEntity().WithModel(Model.FromFile("StereoKit.glb"))
+            .WithTransform(new Pose(0.6f, 0, -0.5f, Quat.Identity));
+    }
+
+    private static void CreateTextEntity(World world)
+    {
+        world.CreateEntity().WithText("New Text")
+            .WithTransform(new Pose(-0.9f, 0, -0.5f, Quat.Identity));
+    }
+
+    private static void CreateLineEntity(World world)
+    {
+        world.CreateEntity().WithLine(new Vec3(-1.2f, 0, -0.5f), new Vec3(-1.2f, 0.1f, -0.5f));
+
+    }
 }
