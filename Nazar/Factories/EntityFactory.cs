@@ -9,7 +9,7 @@ public static class EntityFactory
     {
         var entity = world.CreateEntity();
         entity.Set(new ButtonComponent());
-        entity.Set(new TextContentsComponent() { TextContents = label });
+        entity.Set(new TextContentsComponent() { TextContents = label ?? "Default Label" });
         entity.Set(new PositionComponent { Value = position });
         entity.Set(new DrawableComponent());
         return entity;
@@ -18,7 +18,7 @@ public static class EntityFactory
     public static Entity CreateTextWindow(World world, string text, Pose position)
     {
         var entity = world.CreateEntity();
-        entity.Set(new TextContentsComponent { TextContents = text });
+        entity.Set(new TextContentsComponent { TextContents = text ?? "Default Text" });
         entity.Set(new PositionComponent { Value = position });
         entity.Set(new DrawableComponent());
         return entity;
