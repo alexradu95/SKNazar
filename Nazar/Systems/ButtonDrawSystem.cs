@@ -7,7 +7,7 @@ public class ButtonDrawSystem(World world) : BaseSystem<float>(world)
 {
     public override void Update(float state)
     {
-        var buttonsToDraw = World.GetEntities().With<DrawableComponent>().With<ButtonComponent>().AsSet();
+        var buttonsToDraw = World.GetEntities().With<DrawableComponent>().With<PositionComponent>().With<ButtonComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonsToDraw.GetEntities())
         {
@@ -15,15 +15,7 @@ public class ButtonDrawSystem(World world) : BaseSystem<float>(world)
             ref var position = ref entity.Get<PositionComponent>();
             
             TextContentsComponent text;
-            if (entity.Has<TextContentsComponent>())
-            {
-                text = entity.Get<TextContentsComponent>();
-            }
-            else
-            {
-                text = new TextContentsComponent { TextContents = "Default Label" };
-            }
-
+            text = entity.Has<TextContentsComponent>() ? entity.Get<TextContentsComponent>() : new TextContentsComponent { TextContents = "Default Label" };
 
             if (entity.Has<PositionComponent>())
             {
