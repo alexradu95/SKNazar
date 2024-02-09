@@ -1,7 +1,6 @@
+namespace Nazar.Components;
 
-  namespace Nazar.Components;
- 
-    public struct ButtonPressedMessage {
-     public string Message { get; set; }
-     
-  }
+public struct ButtonPressedMessage
+{
+    public string Message { get; set; }
+}

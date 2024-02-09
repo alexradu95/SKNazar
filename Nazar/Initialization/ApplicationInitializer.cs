@@ -1,5 +1,4 @@
 using Nazar.Factories;
-using StereoKit;
 
 namespace Nazar.Initialization;
 
@@ -15,7 +14,7 @@ public static class ApplicationInitializer
         }
 
         world = new World();
-        systems = new List<ISystem<float>>();
+        systems = [];
 
         CreateEntities(world);
         SystemsInitializer.InitializeSystems(world, systems);

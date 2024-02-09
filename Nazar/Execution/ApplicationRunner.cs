@@ -1,6 +1,3 @@
-using StereoKit;
-using System.Collections.Generic;
-
 namespace Nazar.Execution;
 
 public static class ApplicationRunner

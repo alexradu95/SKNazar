@@ -1,11 +1,12 @@
 using Nazar.Components;
-using DefaultEcs;
 
 namespace Nazar.Systems;
 
 public class ButtonInteractionSystem : BaseSystem<float>
 {
-    public ButtonInteractionSystem(World world) : base(world) { }
+    public ButtonInteractionSystem(World world) : base(world)
+    {
+    }
 
     public override void Update(float state)
     {
@@ -20,7 +21,6 @@ public class ButtonInteractionSystem : BaseSystem<float>
                 World.Publish(new ButtonPressedMessage { Message = button.Label + " pressed" });
                 button.IsPressed = false; // Reset the IsPressed state
             }
-            
         }
     }
 }

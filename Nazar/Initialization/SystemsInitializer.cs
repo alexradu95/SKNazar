@@ -1,6 +1,3 @@
-using Nazar.Systems;
-using System.Collections.Generic;
-
 namespace Nazar.Initialization;
 
 public static class SystemsInitializer

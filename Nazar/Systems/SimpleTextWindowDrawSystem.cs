@@ -1,15 +1,16 @@
 using Nazar.Components;
 using Nazar.UIHandlers;
 
-
 namespace Nazar.Systems;
 
 /// <summary>
-/// System responsible for drawing text windows in the world.
+///     System responsible for drawing text windows in the world.
 /// </summary>
 public class SimpleTextWindowDrawSystem : BaseSystem<float>
 {
-    public SimpleTextWindowDrawSystem(World world) : base(world) { }
+    public SimpleTextWindowDrawSystem(World world) : base(world)
+    {
+    }
 
     public override void Update(float state)
     {
@@ -22,7 +23,7 @@ public class SimpleTextWindowDrawSystem : BaseSystem<float>
 
             UIHandler.DrawTextWindow(ref textContent, ref position);
 
-                        UIHandler.DrawTextWindow(ref textContent, ref position);
+            UIHandler.DrawTextWindow(ref textContent, ref position);
 
             UIHandler.DrawTextWindow(ref textContent, ref position);
         }

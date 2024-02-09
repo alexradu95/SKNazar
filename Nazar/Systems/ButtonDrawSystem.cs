@@ -1,15 +1,16 @@
 using Nazar.Components;
 using Nazar.UIHandlers;
 
-
 namespace Nazar.Systems;
 
 /// <summary>
-/// System responsible for drawing buttons in the world.
+///     System responsible for drawing buttons in the world.
 /// </summary>
 public class ButtonDrawSystem : BaseSystem<float>
 {
-    public ButtonDrawSystem(World world) : base(world) { }
+    public ButtonDrawSystem(World world) : base(world)
+    {
+    }
 
     public override void Update(float state)
     {

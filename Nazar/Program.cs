@@ -11,4 +11,3 @@ internal class Program
             ApplicationRunner.Run(world, systems);
     }
 }
-}
