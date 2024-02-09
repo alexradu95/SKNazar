@@ -12,7 +12,8 @@ public class ButtonInteractionSystem(World world) : BaseSystem<float>(world)
         {
             ref var button = ref entity.Get<ButtonComponent>();
             if (!button.IsPressed) continue;
-            World.Publish(new ButtonPressedMessage { Message = "pressed" });
+            var eventName = entity.Get<SubscriberComponent>().EventName;
+            World.Publish(new ButtonPressedMessage { Message = "pressed", EventName = eventName });
             button.IsPressed = false;
         }
     }
