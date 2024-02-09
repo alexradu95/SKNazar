@@ -10,8 +10,8 @@ public class MeshRenderSystem : BaseSystem<float>
 
     public override void Update(float state)
     {
-        var meshComponents = World.GetComponents<MeshComponent>();
-        foreach (var meshComponent in meshComponents)
+        var meshComponents = World.GetComponents<MeshComponent>().AsEnumerable();
+        foreach (MeshComponent meshComponent in meshComponents)
         {
             meshComponent.Draw();
         }
