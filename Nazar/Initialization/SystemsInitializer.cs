@@ -10,6 +10,7 @@ public static class SystemsInitializer
         systems.Add(new ButtonRenderSystem(world));
         systems.Add(new ButtonInteractionSystem(world));
         systems.Add(new ButtonPressedMessageHandler(world));
+        systems.Add(new EntityDebugSystem(world));
         InitializeRenderingSystems(world, systems);
     }
 

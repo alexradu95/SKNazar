@@ -19,36 +19,17 @@ public class EntityDebugSystem : ISystem<float>
         foreach (ref readonly var entity in allEntities.GetEntities())
         {
             // Draw the debug window with a simple label to verify that the window is shown
-            UI.WindowBegin("Entity Configuration");
-            UI.Label($"Entity ID: {entity.Id}");
+            var pose = Pose.Identity;
+            UI.WindowBegin("Entity Configuration", ref pose);
+            UI.Label($"Entity ID: ");
             UI.WindowEnd();
         }
     }
-    {
-        var allEntities = _world.GetEntities().AsSet();
-        foreach (ref readonly var entity in allEntities.GetEntities())
-        {
-            StringBuilder componentList = new StringBuilder();
-            componentList.AppendLine($"Entity");
-
-            foreach (var componentType in entity.GetComponentTypes())
-            {
-                var component = entity.Get(componentType);
-                componentList.AppendLine($"- {componentType.Name}: {component}");
-            }
-
-            // Draw the debug window with the component list
-            // This is a placeholder, replace with actual UI drawing code
-            UI.WindowBegin("Debug", );
-            Debug.DrawWindow(componentList.ToString());
-        }
-    }
-
+    
     public bool IsEnabled { get; set; }
 
     public void Dispose()
     {
-        // Assuming allEntities is a field now, otherwise, this needs to be adjusted
-        allEntities.Dispose();
+
     }
 }
