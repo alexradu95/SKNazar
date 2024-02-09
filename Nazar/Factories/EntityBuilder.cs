@@ -1,8 +1,4 @@
-using DefaultEcs;
-using Nazar.Components;
 using Nazar.Messaging.Components;
-using Nazar.Rendering.Components;
-using StereoKit;
 
 namespace Nazar.Factories;
 
