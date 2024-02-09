@@ -16,7 +16,7 @@ public static class EntityBuilderExtensions
     public static Entity WithButton(this Entity entity, string label)
     {
         entity.Set(new ButtonComponent());
-        entity.Set(new TextContentsComponent { TextContents = label ?? "Default Label" });
+        entity.Set(new TextComponent { Content = label ?? "Default Label" });
         return entity;
     }
 
@@ -49,11 +49,10 @@ public static class EntityBuilderExtensions
         entity.Set(new LineComponent { Start = start, End = end });
         return entity;
     }
-    
+
     public static Entity WithSubscriber(this Entity entity, string eventType)
     {
-        entity.Set(new SubscriberComponent() {EventName = eventType});
+        entity.Set(new SubscriberComponent { EventName = eventType });
         return entity;
     }
-
 }

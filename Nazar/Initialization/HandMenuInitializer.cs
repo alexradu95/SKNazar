@@ -7,7 +7,7 @@ public static class HandMenuInitializer
 {
     public static void SetupHandMenu(World world)
     {
-        HandMenuRadial handMenu = new HandMenuRadial(
+        var handMenu = new HandMenuRadial(
             new HandRadialLayer("Create Entities",
                 new HandMenuItem("Create Button", null, () => CreateButtonEntity(world)),
                 new HandMenuItem("Create Text Window", null, () => CreateTextWindowEntity(world)),
@@ -15,7 +15,7 @@ public static class HandMenuInitializer
                 new HandMenuItem("Create Model", null, () => CreateModelEntity(world)),
                 new HandMenuItem("Create Text", null, () => CreateTextEntity(world)),
                 new HandMenuItem("Create Line", null, () => CreateLineEntity(world)),
-                new HandMenuItem("Close", null, null, HandMenuAction.Close)));
+                new HandMenuItem("Close", null, null)));
         SK.AddStepper(handMenu);
     }
 
@@ -54,6 +54,5 @@ public static class HandMenuInitializer
     private static void CreateLineEntity(World world)
     {
         world.CreateEntity().WithLine(new Vec3(-1.2f, 0, -0.5f), new Vec3(-1.2f, 0.1f, -0.5f));
-
     }
 }
