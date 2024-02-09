@@ -16,6 +16,6 @@ public struct TextComponent
 
     public void Draw()
     {
-        Text.Add(Content, Transform, Style, Color, Position, Align, OffX, OffY, OffZ);
+        Text.Add("こんにちは", Matrix.T(-10, 10, 0));
     }
 }
