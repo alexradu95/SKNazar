@@ -10,7 +10,7 @@ public class ButtonPressedMessageHandler : ISystem<float>
     private readonly IDisposable _messageSubscription;
     private ButtonPressedMessage _currentMessage;
 
-    private bool MatchesEventName(SubscriberComponent component)
+    private bool MatchesEventName(in SubscriberComponent component)
     {
         return component.EventName == _currentMessage.EventName;
     }
