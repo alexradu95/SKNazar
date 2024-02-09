@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Components\SpatialProperties\" />
         <Folder Include="Factories\"/>
+        <Folder Include="Rendering\" />
     </ItemGroup>
 </Project>
