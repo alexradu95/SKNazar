@@ -2,6 +2,10 @@ namespace Nazar.Components;
 
 public struct CustomWindowComponent
 {
-    public Model Model;
-    public Vec2 LayoutSize;
+    public MeshComponent Mesh;
+
+    public CustomWindowComponent(MeshComponent mesh)
+    {
+        Mesh = mesh;
+    }
 }
