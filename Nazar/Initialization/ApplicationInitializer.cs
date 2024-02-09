@@ -1,3 +1,4 @@
+using Nazar.Components;
 using Nazar.Factories;
 
 namespace Nazar.Initialization;
