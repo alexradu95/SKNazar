@@ -11,7 +11,7 @@ public static class HandMenuInitializer
         var handMenu = SK.AddStepper(new HandMenuRadial(
             new HandRadialLayer("Root",
                 new HandMenuItem("Create", null, null, "Create"),
-                new HandMenuItem("Config", null, () => { /* Currently does nothing */ })),
+                new HandMenuItem("Config", null, () => ToggleEntityDebugSystem(world))),
             new HandRadialLayer("Create",
                 new HandMenuItem("Button", null, () => CreateButtonEntity(world)),
                 new HandMenuItem("Text Window", null, () => CreateTextWindowEntity(world)),
