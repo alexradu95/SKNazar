@@ -12,8 +12,10 @@ public class ButtonDrawSystem(World world) : BaseSystem<float>(world)
         foreach (ref readonly var entity in buttonsToDraw.GetEntities())
         {
             ref var button = ref entity.Get<ButtonComponent>();
-            ref var text = entity.Has<TextContentsComponent>() ? ref entity.Get<TextContentsComponent>() : new TextContentsComponent { TextContents = "Default Label" };
             ref var position = ref entity.Get<PositionComponent>();
+            
+            ref var text = entity.Has<TextContentsComponent>() ? ref entity.Get<TextContentsComponent>() : new TextContentsComponent { TextContents = "Default Label" };
+
 
             if (entity.Has<PositionComponent>())
             {
