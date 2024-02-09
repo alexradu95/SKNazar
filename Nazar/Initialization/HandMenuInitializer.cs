@@ -7,18 +7,24 @@ public static class HandMenuInitializer
 {
     public static void SetupHandMenu(World world)
     {
-        var handMenu = new HandMenuRadial(
-            new HandRadialLayer("Create Entities",
-                new HandMenuItem("Create Button", null, () => CreateButtonEntity(world)),
-                new HandMenuItem("Create Text Window", null, () => CreateTextWindowEntity(world)),
-                new HandMenuItem("Create Mesh", null, () => CreateMeshEntity(world)),
-                new HandMenuItem("Create Model", null, () => CreateModelEntity(world)),
-                new HandMenuItem("Create Text", null, () => CreateTextEntity(world)),
-                new HandMenuItem("Create Line", null, () => CreateLineEntity(world)),
-                new HandMenuItem("Close", null, null)));
+        var createLayer = new HandRadialLayer("Create",
+            new HandMenuItem("Button", null, () => CreateButtonEntity(world)),
+            new HandMenuItem("Text Window", null, () => CreateTextWindowEntity(world)),
+            new HandMenuItem("Mesh", null, () => CreateMeshEntity(world)),
+            new HandMenuItem("Model", null, () => CreateModelEntity(world)),
+            new HandMenuItem("Text", null, () => CreateTextEntity(world)),
+            new HandMenuItem("Line", null, () => CreateLineEntity(world)));
+
+        var configureLayer = new HandRadialLayer("Configure",
+            new HandMenuItem("Configure", null, () => { /* Currently does nothing */ }));
+
+        var handMenu = new HandMenuRadial(createLayer, configureLayer);
+
         SK.AddStepper(handMenu);
     }
 
+    // ... other methods remain unchanged ...
+}
     private static void CreateButtonEntity(World world)
     {
         world.CreateEntity().WithButton("New Button")
