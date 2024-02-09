@@ -1,13 +1,12 @@
-using Nazar.Components;
-using Nazar.Rendering.Components;
+
 
 namespace Nazar.Rendering.Systems;
 
-public class WindowRenderSystem(World world) : BaseSystem<float>(world)
+public class WindowRenderSystem(World world) : ISystem<float>
 {
-    public override void Update(float state)
+    public void Update(float state)
     {
-        var windowEntities = World.GetEntities().With<WindowComponent>().With<TransformComponent>().AsSet();
+        var windowEntities = world.GetEntities().With<WindowComponent>().With<TransformComponent>().AsSet();
 
         foreach (ref readonly var entity in windowEntities.GetEntities())
         {
@@ -17,5 +16,12 @@ public class WindowRenderSystem(World world) : BaseSystem<float>(world)
             UI.Label("default");
             UI.WindowEnd();
         }
+    }
+
+    public bool IsEnabled { get; set; }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

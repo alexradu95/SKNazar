@@ -1,6 +1,3 @@
-using Nazar.Factories;
-using StereoKit.Framework;
-
 namespace Nazar.Initialization;
 
 public static class ApplicationInitializer

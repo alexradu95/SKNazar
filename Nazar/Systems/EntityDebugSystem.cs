@@ -2,6 +2,7 @@ using DefaultEcs;
 using Nazar.Components;
 using System.Text;
 
+
 namespace Nazar.Systems;
 
 public class EntityDebugSystem : ISystem<float>

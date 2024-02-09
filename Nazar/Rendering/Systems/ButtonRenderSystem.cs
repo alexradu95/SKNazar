@@ -1,15 +1,12 @@
-using Nazar.Components;
-using Nazar.Rendering.Components;
 
 namespace Nazar.Rendering.Systems;
 
-public class ButtonRenderSystem : BaseSystem<float>
+public class ButtonRenderSystem(World world) : ISystem<float>
 {
-    public ButtonRenderSystem(World world) : base(world) { }
 
-    public override void Update(float state)
+    public void Update(float state)
     {
-        var buttonsToRender = World.GetEntities().With<TransformComponent>().With<ButtonComponent>().With<TextContentsComponent>().AsSet();
+        var buttonsToRender = world.GetEntities().With<TransformComponent>().With<ButtonComponent>().With<TextContentsComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonsToRender.GetEntities())
         {
@@ -18,5 +15,12 @@ public class ButtonRenderSystem : BaseSystem<float>
             ref var text = ref entity.Get<TextContentsComponent>();
             button.IsPressed = UI.Button(text.TextContents);
         }
+    }
+
+    public bool IsEnabled { get; set; }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

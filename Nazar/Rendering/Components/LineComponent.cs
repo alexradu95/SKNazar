@@ -1,3 +1,5 @@
+using StereoKit;
+
 namespace Nazar.Rendering.Components;
 
 public struct LineComponent

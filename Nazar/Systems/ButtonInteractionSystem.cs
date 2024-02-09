@@ -1,22 +1,31 @@
+using DefaultEcs;
+using DefaultEcs.System;
 using Nazar.Components;
 using Nazar.Messaging.Components;
 using Nazar.Rendering.Components;
 
 namespace Nazar.Systems;
 
-public class ButtonInteractionSystem(World world) : BaseSystem<float>(world)
+public class ButtonInteractionSystem(World world) : ISystem<float>
 {
-    public override void Update(float state)
+    public void Update(float state)
     {
-        var buttonEntities = World.GetEntities().With<ButtonComponent>().AsSet();
+        var buttonEntities = world.GetEntities().With<ButtonComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonEntities.GetEntities())
         {
             ref var button = ref entity.Get<ButtonComponent>();
             if (!button.IsPressed) continue;
             var eventName = entity.Get<SubscriberComponent>().EventName;
-            World.Publish(new ButtonPressedMessage { Message = "pressed", EventName = eventName });
+            world.Publish(new ButtonPressedMessage { Message = "pressed", EventName = eventName });
             button.IsPressed = false;
         }
+    }
+
+    public bool IsEnabled { get; set; }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

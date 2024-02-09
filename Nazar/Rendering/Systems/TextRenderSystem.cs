@@ -1,15 +1,12 @@
-using Nazar.Components;
-using Nazar.Rendering.Components;
 
 namespace Nazar.Rendering.Systems;
 
-public class TextRenderSystem : BaseSystem<float>
+public class TextRenderSystem(World world): ISystem<float>
 {
-    public TextRenderSystem(World world) : base(world) { }
 
-    public override void Update(float state)
+    public void Update(float state)
     {
-        var textEntities = World.GetEntities()
+        var textEntities = world.GetEntities()
             .With<TextComponent>()
             .With<TransformComponent>()
             .AsSet();
@@ -20,5 +17,12 @@ public class TextRenderSystem : BaseSystem<float>
             ref readonly var transformComponent = ref entity.Get<TransformComponent>();
             Text.Add(textComponent.Content, transformComponent.ToMatrix());
         }
+    }
+
+    public bool IsEnabled { get; set; }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

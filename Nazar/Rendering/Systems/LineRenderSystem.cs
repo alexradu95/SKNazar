@@ -1,14 +1,15 @@
+using DefaultEcs;
+using DefaultEcs.System;
 using Nazar.Rendering.Components;
 
 namespace Nazar.Rendering.Systems;
 
-public class LineRenderSystem : BaseSystem<float>
+public class LineRenderSystem(World world) : ISystem<float>
 {
-    public LineRenderSystem(World world) : base(world) { }
-
-    public override void Update(float state)
+    
+    public void Update(float state)
     {
-        var lineEntities = World.GetEntities()
+        var lineEntities = world.GetEntities()
             .With<LineComponent>()
             .AsSet();
 
@@ -17,5 +18,12 @@ public class LineRenderSystem : BaseSystem<float>
             ref var lineComponent = ref entity.Get<LineComponent>();
             lineComponent.Draw();
         }
+    }
+
+    public bool IsEnabled { get; set; }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
     }
 }

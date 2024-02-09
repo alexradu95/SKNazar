@@ -1,3 +1,5 @@
+using StereoKit;
+
 namespace Nazar.Components;
 
 public struct TransformComponent
