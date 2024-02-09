@@ -5,9 +5,8 @@ namespace Nazar.Initialization;
 
 public static class HandMenuInitializer
 {
-    public static void SetupHandMenu(World world)
-    {
-public static void SetupHandMenu(World world)
+
+ public static void SetupHandMenu(World world)
 {
         var handMenu = SK.AddStepper(new HandMenuRadial(
             new HandRadialLayer("Root",
@@ -24,10 +23,6 @@ public static void SetupHandMenu(World world)
 
         SK.AddStepper(handMenu);
 }
-
-        SK.AddStepper(handMenu);
-    }
-
     static void CreateButtonEntity(World world)
     {
         world.CreateEntity().WithButton("New Button")
@@ -65,4 +60,3 @@ public static void SetupHandMenu(World world)
         world.CreateEntity().WithLine(new Vec3(-1.2f, 0, -0.5f), new Vec3(-1.2f, 0.1f, -0.5f));
     }
 }
-    
