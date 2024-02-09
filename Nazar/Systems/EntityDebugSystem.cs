@@ -15,7 +15,8 @@ public class EntityDebugSystem : ISystem<float>
 
     public void Update(float state)
     {
-        foreach (var entity in _world.GetAllEntities())
+        var allEntities = _world.GetEntities().AsSet();
+        foreach (ref readonly var entity in allEntities.GetEntities())
         {
             StringBuilder componentList = new StringBuilder();
             componentList.AppendLine($"Entity {entity.EntityId}:");
@@ -36,6 +37,6 @@ public class EntityDebugSystem : ISystem<float>
 
     public void Dispose()
     {
-        // Cleanup if necessary
+        allEntities.Dispose();
     }
 }
