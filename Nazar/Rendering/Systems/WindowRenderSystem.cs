@@ -1,7 +1,7 @@
 using Nazar.Components;
-using StereoKit;
+using Nazar.Rendering.Components;
 
-namespace Nazar.Systems;
+namespace Nazar.Rendering.Systems;
 
 public class WindowRenderSystem(World world) : BaseSystem<float>(world)
 {

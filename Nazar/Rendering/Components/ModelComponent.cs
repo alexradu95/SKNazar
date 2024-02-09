@@ -1,4 +1,6 @@
-namespace Nazar.Components;
+using Nazar.Components;
+
+namespace Nazar.Rendering.Components;
 
 public struct ModelComponent
 {

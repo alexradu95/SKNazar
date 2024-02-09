@@ -1,7 +1,8 @@
 using DefaultEcs;
 using Nazar.Components;
+using Nazar.Messaging.Components;
 
-namespace Nazar.MessageHandlers;
+namespace Nazar.Messaging.Systems;
 
 public class ButtonPressedMessageHandler : ISystem<float>
 {

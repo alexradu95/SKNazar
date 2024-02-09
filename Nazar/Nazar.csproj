@@ -11,9 +11,6 @@
 
     <ItemGroup>
         <Folder Include="Factories\" />
-        <Folder Include="Components\SpatialProperties\" />
-        <Folder Include="Components\Rendering\" />
-        <Folder Include="Components\Messaging\" />
         <Folder Include="Systems\Renderers\" />
         <Folder Include="Systems\Messaging\" />
         <Folder Include="Initialization\" />

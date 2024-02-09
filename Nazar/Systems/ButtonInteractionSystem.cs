@@ -1,4 +1,6 @@
 using Nazar.Components;
+using Nazar.Messaging.Components;
+using Nazar.Rendering.Components;
 
 namespace Nazar.Systems;
 

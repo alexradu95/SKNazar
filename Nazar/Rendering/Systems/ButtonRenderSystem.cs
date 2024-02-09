@@ -1,6 +1,7 @@
 using Nazar.Components;
+using Nazar.Rendering.Components;
 
-namespace Nazar.Systems;
+namespace Nazar.Rendering.Systems;
 
 public class ButtonRenderSystem : BaseSystem<float>
 {

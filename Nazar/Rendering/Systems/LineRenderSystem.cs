@@ -1,7 +1,6 @@
-using Nazar.Components;
-using StereoKit;
+using Nazar.Rendering.Components;
 
-namespace Nazar.Systems.Renderers;
+namespace Nazar.Rendering.Systems;
 
 public class LineRenderSystem : BaseSystem<float>
 {

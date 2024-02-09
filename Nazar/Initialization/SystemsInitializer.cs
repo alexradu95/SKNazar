@@ -1,5 +1,5 @@
-using Nazar.MessageHandlers;
-using Nazar.Systems.Renderers;
+using Nazar.Messaging.Systems;
+using Nazar.Rendering.Systems;
 
 namespace Nazar.Initialization;
 

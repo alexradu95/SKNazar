@@ -1,5 +1,7 @@
 using DefaultEcs;
 using Nazar.Components;
+using Nazar.Messaging.Components;
+using Nazar.Rendering.Components;
 
 namespace Nazar.Factories;
 
@@ -45,6 +47,12 @@ public static class EntityBuilderExtensions
     public static Entity WithLine(this Entity entity, Vec3 start, Vec3 end)
     {
         entity.Set(new LineComponent { Start = start, End = end });
+        return entity;
+    }
+    
+    public static Entity WithSubscriber(this Entity entity, string eventType)
+    {
+        entity.Set(new SubscriberComponent() {EventName = eventType});
         return entity;
     }
 

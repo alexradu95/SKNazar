@@ -1,6 +1,7 @@
 using Nazar.Components;
+using Nazar.Rendering.Components;
 
-namespace Nazar.Systems.Renderers;
+namespace Nazar.Rendering.Systems;
 
 public class MeshRenderSystem(World world) : BaseSystem<float>(world)
 {

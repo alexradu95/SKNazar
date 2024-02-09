@@ -1,4 +1,4 @@
-namespace Nazar.Components;
+namespace Nazar.Messaging.Components;
 
 public struct SubscriberComponent
 {
