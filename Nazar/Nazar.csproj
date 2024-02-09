@@ -11,6 +11,12 @@
 
     <ItemGroup>
         <Folder Include="Factories\"/>
-        <Folder Include="Rendering\" />
+        <Folder Include="Components\"/>
+        <Folder Include="Systems\"/>
+        <Folder Include="Systems\Renderers\"/>
+        <Folder Include="Systems\Messaging\"/>
+        <Folder Include="Initialization\"/>
+        <Folder Include="Execution\"/>
+        <Folder Include="Assets\"/>
     </ItemGroup>
 </Project>
