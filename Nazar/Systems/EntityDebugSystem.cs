@@ -15,6 +15,16 @@ public class EntityDebugSystem : ISystem<float>
 
     public void Update(float state)
     {
+        var allEntities = _world.GetEntities().With<IsConfigurableComponent>().AsSet();
+        foreach (ref readonly var entity in allEntities.GetEntities())
+        {
+            // Draw the debug window with a simple label to verify that the window is shown
+            UI.WindowBegin("Entity Configuration");
+            UI.Label($"Entity ID: {entity.Id}");
+            UI.WindowEnd();
+        }
+    }
+    {
         var allEntities = _world.GetEntities().AsSet();
         foreach (ref readonly var entity in allEntities.GetEntities())
         {
@@ -38,6 +48,7 @@ public class EntityDebugSystem : ISystem<float>
 
     public void Dispose()
     {
+        // Assuming allEntities is a field now, otherwise, this needs to be adjusted
         allEntities.Dispose();
     }
 }
