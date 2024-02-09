@@ -10,10 +10,12 @@ public class MeshRenderSystem : BaseSystem<float>
 
     public override void Update(float state)
     {
-        var meshComponents = World.GetEntities().With<MeshComponent>().AsEnumerable();
-        foreach (var meshComponent in meshComponents)
+        var meshEntities = World.GetEntities().With<MeshComponent>().AsSet();
+        foreach (ref readonly var entity in meshEntities.GetEntities())
         {
-            meshComponent();
+            ref var meshComponent = ref entity.Get<MeshComponent>();
+            // Assuming there is a Draw method in MeshComponent that takes no arguments
+            meshComponent.Draw();
         }
     }
 }
