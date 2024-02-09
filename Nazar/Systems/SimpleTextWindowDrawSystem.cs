@@ -6,12 +6,8 @@ namespace Nazar.Systems;
 /// <summary>
 ///     System responsible for drawing text windows in the world.
 /// </summary>
-public class SimpleTextWindowDrawSystem : BaseSystem<float>
+public class SimpleTextWindowDrawSystem(World world) : BaseSystem<float>(world)
 {
-    public SimpleTextWindowDrawSystem(World world) : base(world)
-    {
-    }
-
     public override void Update(float state)
     {
         var windowsToDraw = World.GetEntities().With<PositionComponent>().With<TextContentsComponent>().AsSet();

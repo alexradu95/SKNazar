@@ -6,12 +6,8 @@ namespace Nazar.Systems;
 /// <summary>
 ///     System responsible for drawing buttons in the world.
 /// </summary>
-public class ButtonDrawSystem : BaseSystem<float>
+public class ButtonDrawSystem(World world) : BaseSystem<float>(world)
 {
-    public ButtonDrawSystem(World world) : base(world)
-    {
-    }
-
     public override void Update(float state)
     {
         var buttonsToDraw = World.GetEntities().With<PositionComponent>().With<ButtonComponent>().AsSet();
