@@ -6,7 +6,7 @@ namespace Nazar.Systems;
 /// <summary>
 ///     System responsible for drawing text windows in the world.
 /// </summary>
-public class SimpleTextWindowDrawSystem(World world) : BaseSystem<float>(world)
+public class TextWindowDrawSystem(World world) : BaseSystem<float>(world)
 {
     public override void Update(float state)
     {

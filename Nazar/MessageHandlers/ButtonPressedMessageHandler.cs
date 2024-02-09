@@ -1,12 +1,8 @@
 using DefaultEcs;
-using DefaultEcs.System;
 using Nazar.Components;
 
-namespace Nazar.Systems;
+namespace Nazar.MessageHandlers;
 
-/// <summary>
-///     Handler responsible for processing button pressed messages.
-/// </summary>
 public class ButtonPressedMessageHandler : ISystem<float>
 {
     private readonly World _world;

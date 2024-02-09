@@ -4,10 +4,10 @@ namespace Nazar.UIHandlers;
 
 public static class UIHandler
 {
-    public static void DrawButton(ref ButtonComponent button, ref PositionComponent position)
+    public static void DrawButton(ref ButtonComponent button, ref PositionComponent position, ref TextContentsComponent textContent)
     {
-        UI.WindowBegin(button.Label + "Window", ref position.Value, new Vec2(20, 0) * U.cm);
-        button.IsPressed = UI.Button(button.Label);
+        UI.WindowBegin(textContent.TextContents + "Window", ref position.Value, new Vec2(20, 0) * U.cm);
+        button.IsPressed = UI.Button(textContent.TextContents);
         UI.WindowEnd();
     }
 

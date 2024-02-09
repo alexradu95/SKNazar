@@ -1,3 +1,5 @@
+using Nazar.MessageHandlers;
+
 namespace Nazar.Initialization;
 
 public static class SystemsInitializer
@@ -6,7 +8,7 @@ public static class SystemsInitializer
     {
         systems.Add(new ButtonDrawSystem(world));
         systems.Add(new ButtonInteractionSystem(world));
-        systems.Add(new TextMessageUpdateSystem(world));
-        systems.Add(new SimpleTextWindowDrawSystem(world));
+        systems.Add(new ButtonPressedMessageHandler(world));
+        systems.Add(new TextWindowDrawSystem(world));
     }
 }
