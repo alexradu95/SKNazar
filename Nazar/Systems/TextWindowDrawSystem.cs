@@ -10,7 +10,7 @@ public class TextWindowDrawSystem(World world) : BaseSystem<float>(world)
 {
     public override void Update(float state)
     {
-        var windowsToDraw = World.GetEntities().With<PositionComponent>().With<TextContentsComponent>().AsSet();
+        var windowsToDraw = World.GetEntities().With<DrawableComponent>().With<PositionComponent>().With<TextContentsComponent>().AsSet();
         foreach (ref readonly var entity in windowsToDraw.GetEntities())
         {
             ref var position = ref entity.Get<PositionComponent>();

@@ -7,7 +7,7 @@ public class ButtonDrawSystem(World world) : BaseSystem<float>(world)
 {
     public override void Update(float state)
     {
-        var buttonsToDraw = World.GetEntities().With<PositionComponent>().With<ButtonComponent>().With<TextContentsComponent>().AsSet();
+        var buttonsToDraw = World.GetEntities().With<DrawableComponent>().With<PositionComponent>().With<ButtonComponent>().With<TextContentsComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonsToDraw.GetEntities())
         {

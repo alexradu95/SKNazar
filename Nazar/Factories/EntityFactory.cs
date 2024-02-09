@@ -11,6 +11,7 @@ public static class EntityFactory
         entity.Set(new ButtonComponent());
         entity.Set(new TextContentsComponent() { TextContents = label });
         entity.Set(new PositionComponent { Value = position });
+        entity.Set(new DrawableComponent());
         return entity;
     }
     
@@ -19,6 +20,7 @@ public static class EntityFactory
         var entity = world.CreateEntity();
         entity.Set(new TextContentsComponent { TextContents = text });
         entity.Set(new PositionComponent { Value = position });
+        entity.Set(new DrawableComponent());
         return entity;
     }
 }
