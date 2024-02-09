@@ -46,6 +46,7 @@
    is easy to understand and maintain.
 5. **StereoKit and DefaultEcs**: Utilize the strengths of StereoKit for MR development and DefaultEcs for managing
    entities, components, and systems.
+6. **Entity Factory**: When creating entities, if parameters are not provided, the factory should use default parameters. It should also ensure that it's impossible to have null values.
 
 ## Project State and Tasks:
 
