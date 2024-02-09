@@ -17,7 +17,7 @@ public static class ApplicationInitializer
         world = new World();
         systems = [];
 
-        CreateEntities(world);
+        CreateDemoEntities(world);
         SystemsInitializer.InitializeSystems(world, systems);
 
         return true;
@@ -32,7 +32,7 @@ public static class ApplicationInitializer
         };
     }
 
-    private static void CreateEntities(World world)
+    private static void CreateDemoEntities(World world)
     {
         var button = EntityFactory.CreateButton(world, "Press Me!", new Pose(0.2f, 0, -0.5f, Quat.Identity));
         button.Set(new SubscriberComponent { EventName = "ButtonPressed" });
