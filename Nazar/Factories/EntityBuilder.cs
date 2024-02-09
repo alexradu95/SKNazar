@@ -9,6 +9,7 @@ public static class EntityBuilderExtensions
 {
     public static Entity WithTransform(this Entity entity, Pose? position = null)
     {
+        entity.Set<IsConfigurableComponent>();
         entity.Set(new TransformComponent { Position = position ?? new Pose(0, 0, 0, Quat.Identity) });
         return entity;
     }
