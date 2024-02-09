@@ -2,12 +2,6 @@ namespace Nazar.Components;
 
 public struct TransformComponent
 {
-    public Matrix Transform;
-}
-namespace Nazar.Components;
-
-public struct TransformComponent
-{
     public Pose Position;
     public Vec3 Scale;
     public Quat Rotation;

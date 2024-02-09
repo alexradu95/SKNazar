@@ -9,12 +9,13 @@ public class WindowRenderer : BaseSystem<float>
 
     public override void Update(float state)
     {
-        var windowEntities = World.GetEntities().With<WindowComponent>().AsSet();
+        var windowEntities = World.GetEntities().With<WindowComponent>().With<TransformComponent>().AsSet();
 
         foreach (ref readonly var entity in windowEntities.GetEntities())
         {
             ref var window = ref entity.Get<WindowComponent>();
-            UI.WindowBegin("Window", ref window.Pose, window.Size * U.cm, window.ShowHeader ? UIWin.Normal : UIWin.Body);
+            ref var transform = ref entity.Get<TransformComponent>();
+            UI.WindowBegin("Window", ref transform.Position, window.Size * U.cm, window.ShowHeader ? UIWin.Normal : UIWin.Body);
             // ... UI elements for the window ...
             UI.WindowEnd();
         }

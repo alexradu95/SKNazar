@@ -19,9 +19,9 @@ public class RenderSystem : BaseSystem<float>
         {
             ref var mesh = ref entity.Get<MeshComponent>().Mesh;
             ref var material = ref entity.Get<MaterialComponent>().Material;
-            ref var transform = ref entity.Get<TransformComponent>().Transform;
+            ref var transform = ref entity.Get<TransformComponent>();
 
-            mesh.Draw(material, transform);
+            mesh.Draw(material, transform.ToMatrix());
         }
     }
 }
