@@ -2,9 +2,9 @@ using Nazar.Components;
 
 namespace Nazar.Systems;
 
-public class ButtonRenderer : BaseSystem<float>
+public class ButtonRenderSystem : BaseSystem<float>
 {
-    public ButtonRenderer(World world) : base(world) { }
+    public ButtonRenderSystem(World world) : base(world) { }
 
     public override void Update(float state)
     {
@@ -15,9 +15,7 @@ public class ButtonRenderer : BaseSystem<float>
             ref var button = ref entity.Get<ButtonComponent>();
             ref var position = ref entity.Get<TransformComponent>();
             ref var text = ref entity.Get<TextContentsComponent>();
-            UI.WindowBegin(text.TextContents + "Window", ref position.Position, new Vec2(20, 0) * U.cm);
             button.IsPressed = UI.Button(text.TextContents);
-            UI.WindowEnd();
         }
     }
 }

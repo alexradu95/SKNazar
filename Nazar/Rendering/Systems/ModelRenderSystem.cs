@@ -18,7 +18,7 @@ public class ModelRenderSystem : BaseSystem<float>
         {
             ref readonly var modelComponent = ref entity.Get<ModelComponent>();
             ref readonly var transform = ref entity.Get<TransformComponent>();
-            modelComponent.Model.Draw(Material.Default, transform.ToMatrix());
+            modelComponent.Model.Draw(transform.ToMatrix(), Color.Black);
         }
     }
 }
