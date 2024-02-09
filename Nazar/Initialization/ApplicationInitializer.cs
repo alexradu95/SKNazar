@@ -51,6 +51,5 @@ public static class ApplicationInitializer
 
         // Example Line entity
         EntityFactory.CreateLine(world, new Vec3(-1.2f, 0, -0.5f), new Vec3(-1.2f, 0.1f, -0.5f));
-
     }
 }
