@@ -9,6 +9,5 @@ public static class SystemsInitializer
         systems.Add(new ButtonRenderer(world));
         systems.Add(new ButtonInteractionSystem(world));
         systems.Add(new ButtonPressedMessageHandler(world));
-        systems.Add(new TextWindowRenderer(world));
     }
 }
