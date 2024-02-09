@@ -16,9 +16,9 @@ public class ModelRenderSystem : BaseSystem<float>
 
         foreach (ref readonly var entity in modelEntities.GetEntities())
         {
-            ref var modelComponent = ref entity.Get<ModelComponent>();
-            ref var transform = ref entity.Get<TransformComponent>();
-            modelComponent.Draw(transform);
+            ref readonly var modelComponent = ref entity.Get<ModelComponent>();
+            ref readonly var transform = ref entity.Get<TransformComponent>();
+            modelComponent.Model.Draw(Material.Default, transform.ToMatrix());
         }
     }
 }

@@ -16,9 +16,9 @@ public class TextRenderSystem : BaseSystem<float>
 
         foreach (ref readonly var entity in textEntities.GetEntities())
         {
-            ref var textComponent = ref entity.Get<TextComponent>();
-            ref var transformComponent = ref entity.Get<TransformComponent>();
-            Text.Add(textComponent.Content, transformComponent.ToMatrix());
+            ref readonly var textComponent = ref entity.Get<TextComponent>();
+            ref readonly var transformComponent = ref entity.Get<TransformComponent>();
+            Text.Add(textComponent.Content, transformComponent.ToMatrix(), TextAlign.Center, TextFit.Wrap, 1.0f, 1.0f);
         }
     }
 }
