@@ -1,4 +1,4 @@
-
+using Nazar.Messaging.Components;
 
 namespace Nazar.Initialization;
 
@@ -24,17 +24,15 @@ public static class HandMenuInitializer
 }
     static void CreateButtonEntity(World world)
     {
-        world.CreateEntity().WithButton("New Button")
-            .WithTransform(new Pose(0.0f, 0, -0.5f, Quat.Identity))
-            .WithSubscriber("ButtonPressed");
+        var entity = world.CreateEntity();
+        entity.Set(new ButtonComponent { IsPressed = false });
+        entity.Set(new TextComponent { Content = "New Button" });
+        entity.Set(new TransformComponent { Position = new Pose(0.0f, 0, -0.5f, Quat.Identity) });
+        entity.Set(new SubscriberComponent { EventName = "ButtonPressed" });
+        entity.Set(new IdComponent(Guid.NewGuid()));
     }
 
-    private static void CreateTextWindowEntity(World world)
-    {
-        world.CreateEntity().WithTextWindow()
-            .WithTransform(new Pose(-0.3f, 0, -0.5f, Quat.Identity))
-            .WithSubscriber("ButtonPressed");
-    }
+ 
 
     static void CreateMeshEntity(World world)
     {
