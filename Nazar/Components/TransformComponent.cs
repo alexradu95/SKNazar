@@ -5,9 +5,10 @@ namespace Nazar.Components;
 public struct TransformComponent
 {
     public Pose Position;
+    public Vec3 Scale;
 
-    public readonly Matrix ToMatrix()
+    public Matrix ToMatrix()
     {
-        return Matrix.TRS(Position.position, Vec3.One, Vec3.One);
+        return Matrix.TRS(Position.position, Position.orientation, Scale);
     }
 }
