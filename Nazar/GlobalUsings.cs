@@ -1,7 +1,6 @@
 global using System;
 global using System.Collections.Generic;
 global using Nazar.Components;
-global using Nazar.Factories;
 global using Nazar.Initialization;
 global using Nazar.Messaging.Systems;
 global using Nazar.Rendering.Components;

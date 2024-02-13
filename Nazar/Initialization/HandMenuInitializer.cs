@@ -1,4 +1,5 @@
 using Nazar.Messaging.Components;
+using ButtonComponent = Nazar.Rendering.Components.ButtonComponent;
 
 namespace Nazar.Initialization;
 

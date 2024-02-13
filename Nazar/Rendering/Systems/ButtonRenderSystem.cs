@@ -1,4 +1,6 @@
 
+using ButtonComponent = Nazar.Rendering.Components.ButtonComponent;
+
 namespace Nazar.Rendering.Systems;
 
 public class ButtonRenderSystem(World world) : ISystem<float>

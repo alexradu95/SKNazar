@@ -3,6 +3,7 @@ using DefaultEcs.System;
 using Nazar.Components;
 using Nazar.Messaging.Components;
 using Nazar.Rendering.Components;
+using ButtonComponent = Nazar.Rendering.Components.ButtonComponent;
 
 namespace Nazar.Systems;
 
