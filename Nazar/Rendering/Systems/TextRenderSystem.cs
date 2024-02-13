@@ -17,13 +17,10 @@ public class TextRenderSystem(World world): ISystem<float>
             ref readonly var textComponent = ref entity.Get<TextComponent>();
             ref readonly var transformComponent = ref entity.Get<TransformComponent>();
             Text.Add(textComponent.Content, transformComponent.ToMatrix());
-            ref readonly var textComponent = ref entity.Get<TextComponent>();
-            ref readonly var transformComponent = ref entity.Get<TransformComponent>();
-            Text.Add(textComponent.Content, transformComponent.ToMatrix());
         }
     }
 
-    public bool IsEnabled { get; set; }
+    public bool IsEnabled { get; set; } = true;
 
     public void Dispose()
     {

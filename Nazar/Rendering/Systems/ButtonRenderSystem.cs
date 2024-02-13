@@ -1,4 +1,5 @@
 
+using Nazar.Messaging.Components;
 using ButtonComponent = Nazar.Rendering.Components.ButtonComponent;
 
 namespace Nazar.Rendering.Systems;
@@ -8,7 +9,7 @@ public class ButtonRenderSystem(World world) : ISystem<float>
 
     public void Update(float state)
     {
-        var buttonsToRender = world.GetEntities().With<TransformComponent>().With<ButtonComponent>().With<TextComponent>().AsSet();
+        var buttonsToRender = world.GetEntities().With<TransformComponent>().With<SubscriberComponent>().With<IdComponent>().With<ButtonComponent>().With<TextComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonsToRender.GetEntities())
         {
@@ -19,7 +20,7 @@ public class ButtonRenderSystem(World world) : ISystem<float>
         }
     }
 
-    public bool IsEnabled { get; set; }
+    public bool IsEnabled { get; set; } = true;
 
     public void Dispose()
     {

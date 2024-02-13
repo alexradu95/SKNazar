@@ -9,7 +9,7 @@ public static class SystemsInitializer
 {
     public static void InitializeSystems(World world, List<ISystem<float>> systems)
     {
-        systems.Add(new ButtonRenderSystem(world));
+
         systems.Add(new ButtonInteractionSystem(world));
         systems.Add(new ButtonPressedMessageHandler(world));
         systems.Add(new EntityDebugSystem(world));
@@ -18,6 +18,7 @@ public static class SystemsInitializer
 
     public static void InitializeRenderingSystems(World world, List<ISystem<float>> renderingSystems)
     {
+        renderingSystems.Add(new ButtonRenderSystem(world));
         renderingSystems.Add(new MeshRenderSystem(world));
         renderingSystems.Add(new WindowRenderSystem(world));
         renderingSystems.Add(new ModelRenderSystem(world));

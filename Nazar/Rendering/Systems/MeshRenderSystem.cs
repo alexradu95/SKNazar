@@ -14,7 +14,7 @@ public class MeshRenderSystem(World world) : ISystem<float>
         }
     }
 
-    public bool IsEnabled { get; set; }
+    public bool IsEnabled { get; set; } = true;
 
     public void Dispose()
     {
