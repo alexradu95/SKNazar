@@ -8,14 +8,14 @@ public class ButtonRenderSystem(World world) : ISystem<float>
 
     public void Update(float state)
     {
-        var buttonsToRender = world.GetEntities().With<TransformComponent>().With<ButtonComponent>().With<TextContentsComponent>().AsSet();
+        var buttonsToRender = world.GetEntities().With<TransformComponent>().With<ButtonComponent>().With<TextComponent>().AsSet();
 
         foreach (ref readonly var entity in buttonsToRender.GetEntities())
         {
             ref var button = ref entity.Get<ButtonComponent>();
             ref var position = ref entity.Get<TransformComponent>();
-            ref var text = ref entity.Get<TextContentsComponent>();
-            button.IsPressed = UI.Button(text.TextContents);
+            ref var text = ref entity.Get<TextComponent>();
+            button.IsPressed = UI.Button(text.Content);
         }
     }
 
@@ -23,6 +23,6 @@ public class ButtonRenderSystem(World world) : ISystem<float>
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        // Dispose logic if necessary
     }
 }

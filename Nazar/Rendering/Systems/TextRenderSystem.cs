@@ -8,11 +8,15 @@ public class TextRenderSystem(World world): ISystem<float>
     {
         var textEntities = world.GetEntities()
             .With<TextComponent>()
+            .With<TextComponent>()
             .With<TransformComponent>()
             .AsSet();
 
         foreach (ref readonly var entity in textEntities.GetEntities())
         {
+            ref readonly var textComponent = ref entity.Get<TextComponent>();
+            ref readonly var transformComponent = ref entity.Get<TransformComponent>();
+            Text.Add(textComponent.Content, transformComponent.ToMatrix());
             ref readonly var textComponent = ref entity.Get<TextComponent>();
             ref readonly var transformComponent = ref entity.Get<TransformComponent>();
             Text.Add(textComponent.Content, transformComponent.ToMatrix());
@@ -23,6 +27,6 @@ public class TextRenderSystem(World world): ISystem<float>
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        // Dispose logic if necessary
     }
 }
